@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 class HR(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -16,8 +14,10 @@ class HR(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 class Test(models.Model):
-    # Only id field is required, Django adds it automatically
-    pass
+    id = models.IntegerField(primary_key=True, unique=True)
+
+    def __str__(self):
+        return f"Test {self.id}"
 
 class Candidate(models.Model):
     first_name = models.CharField(max_length=100)
@@ -40,6 +40,7 @@ class Result(models.Model):
     health = models.FloatField()
     test = models.ForeignKey(Test, on_delete=models.CASCADE, related_name='results')
     hr = models.ForeignKey(HR, on_delete=models.CASCADE, related_name='results')
+    candidate = models.ForeignKey('Candidate', on_delete=models.CASCADE, related_name='results')
 
     def __str__(self):
         return f"Result {self.id} for Test {self.test.id}"
