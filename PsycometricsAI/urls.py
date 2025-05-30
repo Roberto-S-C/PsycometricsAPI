@@ -16,7 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework import routers
+from PsycometricsAPI.views import HRViewSet, TestViewSet, CandidateViewSet, ResultViewSet
+
+router = routers.DefaultRouter()
+router.register(r'hr', HRViewSet)
+router.register(r'tests', TestViewSet)
+router.register(r'candidates', CandidateViewSet)
+router.register(r'results', ResultViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
 ]
