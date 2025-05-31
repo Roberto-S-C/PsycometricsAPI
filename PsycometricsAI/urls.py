@@ -27,7 +27,8 @@ from PsycometricsAPI.views import (
     CandidateCreateView,
     CandidateListView,
     CandidateDeleteView,
-    CandidateLoginView
+    CandidateLoginView,
+    CandidateDetailView
 )
 
 router = routers.DefaultRouter()
@@ -47,4 +48,5 @@ urlpatterns = [
     path('api/candidates/list/', CandidateListView.as_view(), name='candidate_list'),
     path('api/candidates/<int:candidate_id>/', CandidateDeleteView.as_view(), name='candidate_delete'),
     path('api/candidate-login/', CandidateLoginView.as_view(), name='candidate_login'),
+    path('api/candidates/detail/<int:candidate_id>/', CandidateDetailView.as_view(), name='candidate_detail'),
 ]

@@ -11,8 +11,8 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.hashers import check_password
 from rest_framework_simplejwt.tokens import AccessToken
 from django.contrib.auth.models import User
-
 from rest_framework.permissions import AllowAny
+from rest_framework import status
 
 #Vistas usando render 
 
@@ -156,3 +156,24 @@ class CandidateLoginView(APIView):
             
         except Candidate.DoesNotExist:
             return Response({'error': 'Código inválido'}, status=404)
+        
+class CandidateDetailView(APIView):
+    permission_classes = [AllowAny] #Más adelante cambiar a "IsAuthenticated"
+    
+    def get(self, request, candidate_id):
+        try:
+            # Filtrar por el HR autenticado y el ID del candidato
+            candidate = Candidate.objects.get(id=candidate_id, hr=request.user)
+
+            return Response({
+                'id': candidate.id,
+                'first_name': candidate.first_name,
+                'last_name': candidate.last_name,
+                'age': candidate.age,
+                'email': candidate.email,
+                'phone': candidate.phone,
+                'code': candidate.code
+            }, status=status.HTTP_200_OK)
+        
+        except Candidate.DoesNotExist:
+            return Response({'error': 'Candidato no encontrado o no pertenece a este HR'}, status=status.HTTP_404_NOT_FOUND)
