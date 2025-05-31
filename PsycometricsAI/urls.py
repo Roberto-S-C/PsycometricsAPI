@@ -15,11 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from PsycometricsAPI.views import HRViewSet, TestViewSet, CandidateViewSet, ResultViewSet
+from PsycometricsAPI.views import (
+    HRViewSet,
+    TestViewSet,
+    CandidateViewSet,
+    ResultViewSet,
+    HRLoginView,
+    HRRegisterView,
+    CandidateCreateView,
+    CandidateListView,
+    CandidateDeleteView,
+    CandidateLoginView
+)
 
 router = routers.DefaultRouter()
 router.register(r'hr', HRViewSet)
@@ -30,4 +39,12 @@ router.register(r'results', ResultViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    
+    path('api/auth/login/', HRLoginView.as_view(), name='hr_login'),
+    path('api/auth/register/', HRRegisterView.as_view(), name='hr_register'),
+    
+    path('api/candidates/create/', CandidateCreateView.as_view(), name='candidate_create'),
+    path('api/candidates/list/', CandidateListView.as_view(), name='candidate_list'),
+    path('api/candidates/<int:candidate_id>/', CandidateDeleteView.as_view(), name='candidate_delete'),
+    path('api/candidate-login/', CandidateLoginView.as_view(), name='candidate_login'),
 ]
