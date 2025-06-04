@@ -12,6 +12,9 @@ urlpatterns = [
     path('api/hrs', hr_views.hr_list),
     path("api/hrs/<str:id>/", hr_views.hr_detail),
 
+    path('api/tests', test_views.test_list),
+    path("api/tests/<str:id>/", test_views.test_detail),
+
     path('api/results', result_views.result_list),
-    path("api/results/<str:id>/", result_views.result_detail),
+    path("api/results/<str:id>/", result_views.result_detail)
 ]

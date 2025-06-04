@@ -22,7 +22,7 @@ def candidate_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(["GET", "PUT", "DELETE"])
+@api_view(["GET", "DELETE"])
 def candidate_detail(request, id):
     try:
         _id = ObjectId(id)
@@ -35,13 +35,6 @@ def candidate_detail(request, id):
     if request.method == "GET":
         candidate = convert_objectid(candidate)
         return Response(candidate)
-
-    elif request.method == "PUT":
-        serializer = CandidateSerializer(data=request.data)
-        if serializer.is_valid():
-            candidate_collection.update_one({ "_id": _id }, { "$set": serializer.validated_data })
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
 
     elif request.method == "DELETE":
         candidate_collection.delete_one({ "_id": _id })

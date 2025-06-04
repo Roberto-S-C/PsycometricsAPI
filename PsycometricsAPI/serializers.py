@@ -29,9 +29,9 @@ class ResultSerializer(serializers.Serializer):
     tolerance = serializers.FloatField()
     savic = serializers.FloatField()
     health = serializers.FloatField()
-    test_id = serializers.CharField()      # FK to Test
-    hr_id = serializers.CharField()        # FK to HR
-    candidate_id = serializers.CharField() # FK to Candidate
+    test_id = serializers.CharField()
+    hr_id = serializers.CharField()
+    candidate_id = serializers.CharField()
 
 class ResponseOptionSerializer(serializers.Serializer):
     option = serializers.CharField()
