@@ -33,11 +33,13 @@ def hr_detail(request, id):
     if not hr:
         return Response({"error": "HR not found"}, status=status.HTTP_404_NOT_FOUND)
 
+    # 2) Handle GET
     if request.method == "GET":
         hr["id"] = str(hr["_id"])
         del hr["_id"]
         return Response(hr)
 
+    # 3) Handle PUT (update HR)
     if request.method == "PUT":
         serializer = HRSerializer(data=request.data)
         if serializer.is_valid():
@@ -46,22 +48,28 @@ def hr_detail(request, id):
             return Response({"message": "HR updated"})
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    # 4) Handle DELETE (cascade):
     if request.method == "DELETE":
-        try:
-            _id = ObjectId(id)
-            hr = hr_collection.find_one({"_id": _id})
-            if not hr:
-                return Response({"error": "HR not found"}, status=404)
-        except:
-            return Response({"error": "Invalid ID"}, status=400)
+        # 4a) Find all candidates that belong to this HR
+        candidates = list(
+            candidate_collection.find(
+                {"hr_id": _id}, 
+                {"_id": 1}
+            )
+        )
+        candidate_ids = [c["_id"] for c in candidates]
 
-        # Delete related candidates
-        candidate_collection.delete_many({"hr": _id})
+        # 4b) Delete all results whose hr_id == this HR
+        result_collection.delete_many({"hr_id": _id})
 
-        # Delete related results
-        result_collection.delete_many({"hr": _id})
+        # 4c) Delete all results whose candidate_id is in candidate_ids
+        if candidate_ids:
+            result_collection.delete_many({"candidate_id": {"$in": candidate_ids}})
 
-        # Finally delete the HR
+        # 4d) Delete all candidates whose hr_id == this HR
+        candidate_collection.delete_many({"hr_id": _id})
+
+        # 4e) Finally delete the HR document itself
         hr_collection.delete_one({"_id": _id})
 
-        return Response(status=204)
+        return Response(status=status.HTTP_204_NO_CONTENT)
