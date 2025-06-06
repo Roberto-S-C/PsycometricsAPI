@@ -39,6 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.microsoft',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
     'PsycometricsAPI'
 ]
 
@@ -130,3 +139,40 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
 }
+ 
+# SITE_ID = 1
+
+# REST_USE_JWT = True
+
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+#vREST_AUTH_REGISTER_SERIALIZERS = {
+  #  'REGISTER_SERIALIZER': 'dj_rest_auth.registration.serializers.RegisterSerializer',
+# }
+
+#AUTENTICATION = {
+ #   'google': {
+  #      'APP': {
+   #         'client_id': config('GOOGLE_CLIENT_ID'),
+    #        'secret': config('GOOGLE_SECRET'),
+     #       'key': ''
+      #  }
+    # },
+    # 'microsoft': {
+      #  'APP': {
+       #     'client_id': config('MS_CLIENT_ID'),
+        #    'secret': config('MS_SECRET'),
+         #   'key': ''
+       # }
+   # },
+   # 'linkedin_oauth2': {
+    #    'APP': {
+     #       'client_id': config('LINKEDIN_CLIENT_ID'),
+      #      'secret': config('LINKEDIN_SECRET'),
+       #     'key': ''
+       # }
+   # }
+# } 
