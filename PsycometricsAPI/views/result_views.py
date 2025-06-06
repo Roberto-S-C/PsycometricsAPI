@@ -18,29 +18,25 @@ def result_list(request):
         if serializer.is_valid():
             validated = serializer.validated_data
 
-            # Convert string IDs to ObjectId
-            test_id = ObjectId(validated.pop("test_id"))
-            hr_id = ObjectId(validated.pop("hr_id"))
-            candidate_id = ObjectId(validated.pop("candidate_id"))
+            validated["test"] = ObjectId(validated.pop("test_id"))
+            validated["hr"] = ObjectId(validated.pop("hr_id"))
+            validated["candidate"] = ObjectId(validated.pop("candidate_id"))
 
-            result_data = {
-                **validated,
-                "test_id": test_id,
-                "hr_id": hr_id,
-                "candidate_id": candidate_id,
+            inserted = result_collection.insert_one(validated)
+            validated["id"] = str(inserted.inserted_id)
+
+            response_data = {
+                "id": validated["id"],
+                "duration": validated["duration"],
+                "conflicts": validated["conflicts"],
+                "tolerance": validated["tolerance"],
+                "savic": validated["savic"],
+                "health": validated["health"],
+                "test": str(validated["test"]),
+                "hr": str(validated["hr"]),
+                "candidate": str(validated["candidate"]),
             }
-
-            inserted = result_collection.insert_one(result_data)
-            new_result = result_collection.find_one({"_id": inserted.inserted_id})
-
-            # Convert ObjectId fields to strings for the response
-            new_result["id"] = str(new_result["_id"])
-            new_result["test_id"] = str(new_result["test_id"])
-            new_result["hr_id"] = str(new_result["hr_id"])
-            new_result["candidate_id"] = str(new_result["candidate_id"])
-            del new_result["_id"]
-
-            return Response(new_result, status=status.HTTP_201_CREATED)
+            return Response(response_data, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
