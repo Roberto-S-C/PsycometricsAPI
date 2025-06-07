@@ -9,8 +9,8 @@ from ..db.mongo import result_collection, test_collection, candidate_collection
 from ..utils.objectIdConversion import convert_objectid
 
 # Carga de modelos IA (ruta relativa desde el directorio del proyecto)
-STRESS_MODEL = joblib.load('PsycometricsAPI/ai/models/stress_model.joblib')
-EI_MODEL = joblib.load('PsycometricsAPI/ai/models/ei_model.joblib')
+# STRESS_MODEL = joblib.load('PsycometricsAPI/ai/models/stress_model.joblib')
+# EI_MODEL = joblib.load('PsycometricsAPI/ai/models/ei_model.joblib')
 
 
 @api_view(["GET", "POST"])
@@ -108,8 +108,8 @@ def analyze_responses(responses, test_id):
 
         # Predicciones
         return {
-            'work_under_pressure': STRESS_MODEL.predict_proba(df)[0][1],  # RF 3.2.10
-            'emotional_intelligence': EI_MODEL.predict(df)[0],  # p.11
+            # 'work_under_pressure': STRESS_MODEL.predict_proba(df)[0][1],  # RF 3.2.10
+            # 'emotional_intelligence': EI_MODEL.predict(df)[0],  # p.11
             'question_categories': question_types  # Para heatmaps
         }
     except Exception as e:
