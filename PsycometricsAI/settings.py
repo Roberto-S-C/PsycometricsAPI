@@ -140,39 +140,49 @@ REST_FRAMEWORK = {
     ],
 }
  
-# SITE_ID = 1
+SITE_ID = 1
 
-# REST_USE_JWT = True
+REST_USE_JWT = True
 
-# ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-# ACCOUNT_EMAIL_REQUIRED = True
-# ACCOUNT_USERNAME_REQUIRED = False
-# ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 
-#vREST_AUTH_REGISTER_SERIALIZERS = {
-  #  'REGISTER_SERIALIZER': 'dj_rest_auth.registration.serializers.RegisterSerializer',
-# }
+vREST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'dj_rest_auth.registration.serializers.RegisterSerializer',
+ }
 
-#AUTENTICATION = {
- #   'google': {
-  #      'APP': {
-   #         'client_id': config('GOOGLE_CLIENT_ID'),
-    #        'secret': config('GOOGLE_SECRET'),
-     #       'key': ''
-      #  }
-    # },
-    # 'microsoft': {
-      #  'APP': {
-       #     'client_id': config('MS_CLIENT_ID'),
-        #    'secret': config('MS_SECRET'),
-         #   'key': ''
-       # }
-   # },
-   # 'linkedin_oauth2': {
-    #    'APP': {
-     #       'client_id': config('LINKEDIN_CLIENT_ID'),
-      #      'secret': config('LINKEDIN_SECRET'),
-       #     'key': ''
-       # }
-   # }
-# } 
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': config('GOOGLE_CLIENT_ID'),
+            'secret': config('GOOGLE_SECRET'),
+            'key': ''
+        }
+     },
+     'microsoft': {
+        'APP': {
+            'client_id': config('MS_CLIENT_ID'),
+            'secret': config('MS_SECRET'),
+            'key': ''
+        }
+    },
+    'linkedin': {
+        'APP': {
+            'client_id': config('LINKEDIN_CLIENT_ID'),
+            'secret': config('LINKEDIN_CLIENT_SECRET'),
+            'key': ''
+        },
+        'SCOPE': [
+            'r_emailaddress',
+            'r_liteprofile',
+        ],
+        'PROFILE_FIELDS': [
+            'id',
+            'first-name',
+            'last-name',
+            'email-address',
+        ]
+    }
+ } 
