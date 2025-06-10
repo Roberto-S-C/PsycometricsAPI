@@ -15,12 +15,13 @@ urlpatterns = [
     path('api/tests/', test_views.test_list),
     path("api/tests/<str:id>/", test_views.test_detail),
 
-    path('api/results/', result_views.result_list),
+    path('api/results', result_views.result_list),
     path("api/results/<str:id>/", result_views.result_detail),
 
     path('api/signup/', email_auth_views.signup),
     path('api/login/', email_auth_views.login),
 
-    # path('accounts/', include('allauth.urls')),   OAuth + Email endpoints
-
+    path('api/auth/', include('dj_rest_auth.urls')),
+    path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
+    path('api/auth/social/', include('allauth.socialaccount.urls'))
 ]
