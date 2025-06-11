@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.microsoft',
     'allauth.socialaccount.providers.linkedin_oauth2',
 
-    'PsycometricsAPI'
+    'PsycometricsAPI',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware'
+    'allauth.account.middleware.AccountMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'PsycometricsAI.urls'
@@ -132,55 +134,57 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-   "DEFAULT_AUTHENTICATION_CLASSES": [
+    "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
-    ], 
+    ],
 }
- 
+
 SITE_ID = 1
 
 REST_USE_JWT = True
-ACCOUNT_EMAIL_VERIFICATION = 'optional'
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_SIGNUP_FIELDS = ['username', 'email', 'password1', 'password2']
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 
-vREST_AUTH_REGISTER_SERIALIZERS = {
-    'REGISTER_SERIALIZER': 'dj_rest_auth.registration.serializers.RegisterSerializer',
- }
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_AUTO_SIGNUP = True
 
+# Microsoft OAuth2 settings
 SOCIALACCOUNT_PROVIDERS = {
-    'google': {
+    'microsoft': {
         'APP': {
-            'client_id': config('GOOGLE_CLIENT_ID'),
-            'secret': config('GOOGLE_SECRET'),
-            'key': ''
-        }
-     },
-     'microsoft': {
-        'APP': {
-            'client_id': config('MS_CLIENT_ID'),
-            'secret': config('MS_SECRET'),
-            'key': ''
-        }
-    },
-    'linkedin': {
-        'APP': {
-            'client_id': config('LINKEDIN_CLIENT_ID'),
-            'secret': config('LINKEDIN_CLIENT_SECRET'),
+            'client_id': config('MICROSOFT_CLIENT_ID'),
+            'secret': config('MICROSOFT_CLIENT_SECRET'),
             'key': ''
         },
-        'SCOPE': [
-            'r_emailaddress',
-            'r_liteprofile',
-        ],
-        'PROFILE_FIELDS': [
-            'id',
-            'first-name',
-            'last-name',
-            'email-address',
-        ]
+        'SCOPE': ['User.Read'],
+        'AUTH_PARAMS': {'prompt': 'select_account'},
+        'METHOD': 'oauth2',
+        'VERIFIED_EMAIL': True
     }
- } 
+}
+
+SOCIALACCOUNT_ADAPTER = 'PsycometricsAPI.adapters.CustomSocialAccountAdapter'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+ALLOWED_HOSTS = ['*']

@@ -5,11 +5,19 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import authenticate
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
 from ..db.mongo import hr_collection
 
 @api_view(["POST"])
 def signup(request):
     data = request.data
+
+    # Validate email format
+    try:
+        validate_email(data['email'])
+    except ValidationError:
+        return Response({"error": "Invalid email address"}, status=status.HTTP_400_BAD_REQUEST)
 
     if User.objects.filter(email=data['email']).exists():
         return Response({"error": "Email already registered"}, status=status.HTTP_400_BAD_REQUEST)

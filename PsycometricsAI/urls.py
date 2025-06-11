@@ -23,5 +23,5 @@ urlpatterns = [
 
     path('api/auth/', include('dj_rest_auth.urls')),
     path('api/auth/registration/', include('dj_rest_auth.registration.urls')),
-    path('api/auth/social/', include('allauth.socialaccount.urls'))
+    path('accounts/', include('allauth.urls')),  # This is required for social auth
 ]
