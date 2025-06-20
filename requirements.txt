@@ -63,11 +63,6 @@ scipy==1.10.1
 seaborn==0.12.2
 six==1.17.0
 sqlparse==0.5.3
-tensorboard==2.12.3
-tensorboard-data-server==0.7.2
-tensorflow==2.12.0
-tensorflow-estimator==2.12.0
-tensorflow-io-gcs-filesystem==0.34.0
 termcolor==2.4.0
 threadpoolctl==3.5.0
 typing-extensions==4.13.2

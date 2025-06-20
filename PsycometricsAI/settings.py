@@ -172,8 +172,39 @@ SOCIALACCOUNT_PROVIDERS = {
         'AUTH_PARAMS': {'prompt': 'select_account'},
         'METHOD': 'oauth2',
         'VERIFIED_EMAIL': True
+    },
+    'google': {
+        'APP': {
+            'client_id': config('GOOGLE_CLIENT_ID'),
+            'secret': config('GOOGLE_CLIENT_SECRET'),
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    },
+    'linkedin_oauth2': {
+        'APP': {
+            'client_id': config('LINKEDIN_CLIENT_ID'),
+            'secret': config('LINKEDIN_CLIENT_SECRET'),
+            'key': ''
+        },
+        'SCOPE': [
+            'r_liteprofile',
+            'r_emailaddress',
+        ],
+        'AUTH_PARAMS': {
+            'redirect_uri': config('LINKEDIN_REDIRECT_URI')
+        }
     }
 }
+
+MICROSOFT_AUTH_CLIENT_ID = config('MICROSOFT_CLIENT_ID')
+MICROSOFT_AUTH_CLIENT_SECRET = config('MICROSOFT_CLIENT_SECRET')
 
 SOCIALACCOUNT_ADAPTER = 'PsycometricsAPI.adapters.CustomSocialAccountAdapter'
 
