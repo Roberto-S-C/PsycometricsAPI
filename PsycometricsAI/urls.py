@@ -3,7 +3,6 @@ from django.urls import path, include
 from PsycometricsAPI.views import candidate_views, hr_views, test_views, result_views, email_auth_views 
 from PsycometricsAPI.views.microsoft_auth_view import microsoft_auth
 from PsycometricsAPI.views.google_auth_views import google_auth
-from PsycometricsAPI.views.linkendin_auth_view import linkedin_auth, linkedin_callback
 
 
 urlpatterns = [
@@ -29,6 +28,4 @@ urlpatterns = [
     path('api/accounts/', include('allauth.urls')),  # This is required for social auth
     path('api/microsoft/auth/', microsoft_auth),
     path('api/google/auth/', google_auth),
-    path('api/linkedin/auth/', linkedin_auth),
-    path('api/auth/linkedin/callback', linkedin_callback),
 ]

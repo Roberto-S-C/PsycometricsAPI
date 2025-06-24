@@ -38,7 +38,6 @@ INSTALLED_APPS = [
 
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.microsoft',
-    'allauth.socialaccount.providers.linkedin_oauth2',
 
     'PsycometricsAPI',
     'corsheaders',
@@ -185,20 +184,6 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
-        }
-    },
-    'linkedin_oauth2': {
-        'APP': {
-            'client_id': config('LINKEDIN_CLIENT_ID'),
-            'secret': config('LINKEDIN_CLIENT_SECRET'),
-            'key': ''
-        },
-        'SCOPE': [
-            'r_liteprofile',
-            'r_emailaddress',
-        ],
-        'AUTH_PARAMS': {
-            'redirect_uri': config('LINKEDIN_REDIRECT_URI')
         }
     }
 }

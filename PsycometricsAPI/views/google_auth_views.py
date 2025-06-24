@@ -11,71 +11,62 @@ import requests
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def google_auth(request):
-    code = request.data.get('code')
-    redirect_uri = request.data.get('redirect_uri')
-    
-    if not code:
+    id_token = request.data.get('id_token')
+    email = request.data.get('email')
+    name = request.data.get('name')
+
+    if not id_token or not email or not name:
         return Response({
             "status": "error",
-            "code": "MISSING_CODE",
-            "message": "Google authorization code is required"
+            "code": "MISSING_FIELDS",
+            "message": "id_token, email, and name are required"
         }, status=status.HTTP_400_BAD_REQUEST)
 
-    # Exchange code for access token
-    token_url = "https://oauth2.googleapis.com/token"
-    token_data = {
-        'client_id': settings.SOCIALACCOUNT_PROVIDERS['google']['APP']['client_id'],
-        'client_secret': settings.SOCIALACCOUNT_PROVIDERS['google']['APP']['secret'],
-        'code': code,
-        'redirect_uri': redirect_uri,
-        'grant_type': 'authorization_code'
-    }
-
+    # Verify the id_token with Google
+    verify_url = f"https://oauth2.googleapis.com/tokeninfo?id_token={id_token}"
     try:
-        # Get access token
-        token_response = requests.post(token_url, data=token_data)
-        token_response.raise_for_status()
-        token_data = token_response.json()
-        access_token = token_data['access_token']
-
-        # Get user info using the access token
-        userinfo_url = "https://www.googleapis.com/oauth2/v3/userinfo"
-        headers = {'Authorization': f'Bearer {access_token}'}
-        
-        google_response = requests.get(userinfo_url, headers=headers)
-        google_response.raise_for_status()
-        user_data = google_response.json()
-        
-    except requests.exceptions.RequestException as e:
+        verify_response = requests.get(verify_url)
+        verify_response.raise_for_status()
+        token_info = verify_response.json()
+        if token_info.get('email') != email:
+            return Response({
+                "status": "error",
+                "code": "EMAIL_MISMATCH",
+                "message": "Email does not match token"
+            }, status=status.HTTP_400_BAD_REQUEST)
+    except requests.exceptions.RequestException:
         return Response({
             "status": "error",
-            "code": "GOOGLE_API_ERROR",
-            "message": "Failed to validate Google authentication"
+            "code": "INVALID_ID_TOKEN",
+            "message": "Invalid Google ID token"
         }, status=status.HTTP_401_UNAUTHORIZED)
+
+    # Split name into first and last
+    name_parts = name.split(' ', 1)
+    first_name = name_parts[0]
+    last_name = name_parts[1] if len(name_parts) > 1 else ''
 
     # Get or create user
     try:
-        user = User.objects.get(email=user_data['email'])
+        user = User.objects.get(email=email)
     except User.DoesNotExist:
         user = User.objects.create(
-            username=user_data['email'],
-            email=user_data['email'],
-            first_name=user_data.get('given_name', ''),
-            last_name=user_data.get('family_name', '')
+            username=email,
+            email=email,
+            first_name=first_name,
+            last_name=last_name
         )
-
         # Create HR in MongoDB
         hr_doc = {
-            "first_name": user_data.get('given_name', ''),
-            "last_name": user_data.get('family_name', ''),
-            "email": user_data['email'],
-            "picture": user_data.get('picture', '')
+            "first_name": first_name,
+            "last_name": last_name,
+            "email": email,
+            "picture": token_info.get('picture', '')
         }
         inserted_hr = hr_collection.insert_one(hr_doc)
         hr_id = str(inserted_hr.inserted_id)
     else:
-        # Get existing HR
-        hr = hr_collection.find_one({"email": user_data['email']})
+        hr = hr_collection.find_one({"email": email})
         hr_id = str(hr["_id"]) if hr else None
 
     # Generate JWT
