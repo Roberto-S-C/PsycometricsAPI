@@ -1,638 +1,855 @@
 [
-{
-  "test": "Manejo de conflictos",
-  "preguntas": [
-    {
-        "id": 1, 
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{
-            "a": "Hay veces en que dejo que otros tomen la responsabilidad de resolver los problemas", 
-            "b": "En lugar de negociar sobre los puntos que estamos de acuerdo trato de subrayar las cosas en las que ambos estamos de acuerdo"
-        }    
-    },
-    {
-        "id": 2,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de encontrar una solución de compromiso", 
-            "b": "Intento negociar con todos sus problemas y los míos"
-        }    
-    },
-    {
-        "id": 3,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Habitualmente soy muy firme en perseguir mis objetivos", 
-            "b": "Puedo tratar de mitigar los sentimientos del otro y preservar nuestra relación"
-        }
-    },
-    {
-        "id": 4,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de encontrar una solución de compromiso",
-            "b": "A veces sacrifico mis propios deseos por los de los otros"
-        }
-    },
-    {
-        "id": 5,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Busco siempre los aportes del otro para encontrar soluciones a los problemas", 
-            "b": "Trato de hacer lo necesario para evitar tensiones inútiles"
-        }
-    },
-    {
-        "id": 6,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de evitar crearme situaciones desagradables a mi mismo", 
-            "b": "Trato de ganar mi posición"
-    
-        }    
-    },
-    {
-        "id": 7,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de posponer el problema hasta que haya tenido un tiempo para reflexionar", 
-            "b": "Resigno algunos puntos en el intercambio con los otros"
-         } 
-    },
-    {
-        "id": 8,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Habitualmente soy firme en el logro de mis objetivos", 
-            "b": "Pongo atención en dejar todo claro desde un principio"
-         } 
-    },
-    {
-        "id": 9,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Siento que preocuparse de las diferencias no siempre vale la pena", 
-            "b": "Hay cierto esfuerzo para que las cosas hagan mi forma"
-        }
-    },
-    {
-        "id": 10,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Soy firme al perseguir mis objetivos", 
-            "b": "Trato de encontrar una solución de compromisos"
-         } 
-    },
-    {
-        "id": 11,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Intento colocar todos los problemas y conflictos en cuestión sobre la mesa", 
-            "b": "Trato de mitigar los sentimientos del otro y preservar nuestra relación"
-         } 
-    },
-    {
-        "id": 12,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "A veces evito tomar posición que pueda crear controversias", 
-            "b": "Respeto la posición del otro si este respeta la mía"
-         } 
-    },
-    {
-        "id": 13,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Propongo un campo intermedio", 
-            "b": "Presiono para que mis puntos queden claro"
-        }
-    },
-    {
-        "id": 14,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de mitigar los sentimientos del otro y preservar nuestra relación", 
-            "b": "Trato de demostrarle al otro la lógica y los beneficios de mi posición"
-         } 
-    },
-    {
-        "id": 15,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de mitigar los sentimientos del otro y preservar nuestra relación", 
-            "b": "Trato de hacer lo necesario para evitar tensiones"
-        }
-    },
-    {
-        "id": 16,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de no herir los sentimientos del otro", 
-            "b": "Trato de convencer a la otra persona de los méritos de mi posición"
-         } 
-    },
-    {
-        "id": 17,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Habitualmente soy firme al perseguir mis objetivos", 
-            "b": "Trato de hacer lo necesario para evitar tensiones"
-         } 
-    },
-    {
-        "id": 18,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Si los hace feliz dejo que mantengan sus posiciones", 
-            "b": "Dejo a la gente mantener algo de sus posiciones si ellos me dejan mantener algo de las mías"
-         } 
-    },
-    {
-        "id": 19,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Intento plantear todos los problemas abiertamente", 
-            "b": "Trato de posponer el asunto hasta haber tenido tiempo de reflexionar"
-         } 
-    },
-    {
-        "id": 20,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de elaborar y encontrar soluciones inmediatas a los problemas", 
-            "b": "Trato de encontrar una combinación justa de ganancia y pérdida para ambos"
-         } 
-    },
-    {
-        "id": 21,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Al abordar las negociaciones, trato de ser considerado con respecto a los deseos de las otras personas", 
-            "b": "Siempre me inclino hacia una discusión directa del problema"
-         } 
-    },
-    {
-        "id": 22,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de encontrar una posición que sea intermedia entre las de otros y las mías", 
-            "b": "Expreso claramente mis deseos"
-        }
-    },
-    {
-        "id": 23,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Siempre estoy preocupado por satisfacer todos mis deseos", 
-            "b": "Hay veces en que dejo que otros tomen la responsabilidad de resolver los problemas"
-        }
-    },
-    {
-        "id": 24,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Si la posición de la otra persona parece ser muy importante para ella trato de complacer sus deseos", 
-            "b": "Trato de que la otra persona se doblegue para lograr un compromiso"
-        }
-    },
-    {
-        "id": 25,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de mostrarle al otro la lógica y beneficios de mi posición", 
-            "b": "Al abordar negociaciones, trato de ser considerado con los deseos de los otros"
-        }
-    },
-    {
-        "id": 26,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Propongo un campo intermedio", 
-            "b": "Casi siempre estoy preocupado por satisfacer todos mis deseos"
-        }
-    },
-    {
-        "id": 27,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "A veces evito tomar posiciones que puedan crear controversias", 
-            "b": "Si hace feliz al otro dejo que mantenga sus propias posturas"
-        }    
-    },
-    {
-        "id": 28,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Habitualmente soy firme en perseguir mis objetivos", 
-            "b": "Habitualmente busco la ayuda del otro para encontrar y elaborar soluciones"
-        }
-    },
-    {
-        "id": 29,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Propongo un campo intermedio", 
-            "b": "Siento que no siempre vale la pena preocuparse por las diferencias"
-        }
-    },
-    {
-        "id": 30,
-        "pregunta": "Seleccione la opcion que usted usuaria con mayor probabilidad",
-        "opciones":{ 
-            "a": "Trato de no herir los sentimientos de los otros", 
-            "b": "Siempre comparto el problema con otra persona de modo que podamos encontrar una solución"
-        }
-    }
-  ]
-},
-{
-  "test": "Tolerancia a la Frustración",
-  "preguntas": [
-    {
-        "id": 1, 
-        "pregunta": "Mantengo serenidad ante las dificultades", 
-        "dimensión": "Personal"
-    },
-    {
-        "id": 2, 
-        "pregunta": "Cuando estoy en problemas confío en que lo resolveré", 
-        "dimensión": "Personal"
-    },
-    {
-        "id": 3, 
-        "pregunta": "Cuando estoy ante un problema, normalmente analizo con tranquilidad la causa del problema", 
-        "dimensión": "Personal"
-    },
-    {
-        "id": 4, 
-        "pregunta": "Reconozco mis errores sin sentirme mal, y trato de solucionarlo", 
-        "dimensión": "Personal"
-    },
-    {
-        "id": 5, 
-        "pregunta": "Cuando realizo una actividad sin lograr lo esperado, aun así, siento la satisfacción de haberlo intentado", 
-        "dimensión": "Personal"
-    },
-    {
-        "id": 6, 
-        "pregunta": "Me siento motivado a continuar con mis propósitos", 
-        "dimensión": "Personal"
-    },
-    {
-        "id": 7, 
-        "pregunta": "Cuando hay un problema, reacciono con calma sin enojarme", 
-        "dimensión": "Personal"
-    },
-    {
-        "id": 8, 
-        "pregunta": "Cuando me enfrento a un problema, no me rindo fácilmente", 
-        "dimensión": "Personal"
-    },
-    {
-        "id": 9, 
-        "pregunta": "Asumir varias actividades al mismo tiempo y no lograr terminarlo me genera mucha preocupación", 
-        "dimensión": "Laboral"
-    },
-    {
-        "id": 10, 
-        "pregunta": "Cuando no cumplo con mis compromisos me siento preocupado(a)", 
-        "dimensión": "Laboral"
-    },
-    {
-        "id": 11, 
-        "pregunta": "Generalmente cuando tengo varios trabajos en mi trabajo los culmino sin sentirme muy cansado", 
-        "dimensión": "Laboral"
-    },
-    {
-        "id": 12, 
-        "pregunta": "Cuando las personas me critican en mi trabajo, normalmente les refuto sin ofenderlos ni sentirme mal", 
-        "dimensión": "Laboral"
-    },
-    {
-        "id": 13, 
-        "pregunta": "Me doy cuenta fácilmente de lo que siento frente a situaciones de presión laboral y puedo manejarlo adecuadamente", 
-        "dimensión": "Laboral"
-    },
-    {
-        "id": 14, 
-        "pregunta": "A pesar de tener resultados adversos en mis actividades de trabajo o estudio, siento satisfacción si he dado lo mejor de mí", 
-        "dimensión": "Laboral"
-    },
-    {
-        "id": 15, 
-        "pregunta": "Cuando no entiendo una tarea, me disgusto fácilmente", 
-        "dimensión": "Laboral"
-    },
-    {
-        "id": 16, 
-        "pregunta": "Normalmente me relaciono sin dificultades con personas desconocidas en reuniones sociales", 
-        "dimensión": "Social"
-    },
-    {
-        "id": 17, 
-        "pregunta": "Habitualmente manejo mis impulsos frente a problemas", 
-        "dimensión": "Social"
-    },
-    {
-        "id": 18, 
-        "pregunta": "Generalmente reacciono con tranquilidad ante las diferencias que tengo con mis amigos", 
-        "dimensión": "Social"
-    },
-    {
-        "id": 19, 
-        "pregunta": "Generalmente disfruto la presencia de mis amigos", 
-        "dimensión": "Social"
-    },
-    {
-        "id": 20, 
-        "pregunta": "Cuando existe un problema con alguien normalmente controlo mis impulsos", 
-        "dimensión": "Social"
-    },
-    {
-        "id": 21, 
-        "pregunta": "Reacciono con prudencia en circunstancias difíciles frente a mis amigos", 
-        "dimensión": "Social"
-    }
-  ],
-  "escala": {
-    "Siempre": 3,
-    "A veces": 2,
-    "Nunca": 1,
-    "excepciones": [6, 9]
-  }
-},
-{
-  "test": "Salud General",
-  "preguntas": [
-    {
-        "id": 1, 
-        "pregunta": "¿Ha sido capaz de concentrarse en lo que está haciendo?"
-    },
-    {
-        "id": 2, 
-        "pregunta": "¿Ha perdido mucho sueño por preocupaciones?"
-    },
-    {
-        "id": 3, 
-        "pregunta": "¿Se ha sentido constantemente bajo presión?"
-    },
-    {
-        "id": 4, 
-        "pregunta": "¿Ha sentido que no puede superar sus dificultades?"
-    },
-    {
-        "id": 5, 
-        "pregunta": "¿Ha sido capaz de disfrutar de sus actividades diarias?"
-    },
-    {
-        "id": 6, 
-        "pregunta": "¿Ha sido capaz de enfrentar sus problemas?"
-    },
-    {
-        "id": 7, 
-        "pregunta": "¿Se ha sentido infeliz y deprimido?"
-    },
-    {
-        "id": 8, 
-        "pregunta": "¿Ha perdido confianza en sí mismo?"
-    },
-    {
-        "id": 9, 
-        "pregunta": "¿Ha pensado en sí mismo como una persona inútil?"
-    },
-    {
-        "id": 10, 
-        "pregunta": "¿Se ha sentido razonablemente feliz, considerando todas las circunstancias?"
-    },
-    {
-        "id": 11, 
-        "pregunta": "¿Ha sido capaz de tomar decisiones?"
-    },
-    {
-        "id": 12, 
-        "pregunta": "¿Ha sido capaz de desempeñar su papel en la vida?"
-    }
-  ],
-  "escala": {
-    "Menos de lo habitual": 0,
-    "No más de lo habitual": 1,
-    "Más de lo habitual": 2,
-    "Mucho más de lo habitual": 3
+  {
+    "id": 1,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Hay veces en que dejo que otros tomen la responsabilidad de resolver los problemas", 
+      "En lugar de negociar sobre los puntos que estamos de acuerdo trato de subrayar las cosas en las que ambos estamos de acuerdo"
+    ]  
   },
-  "interpretación": {
-    "típico": "11-12",
-    "evidencia_de_angustia": ">15",
-    "problemas_severos": ">20"
+  {
+    "id": 2,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Trato de encontrar una solución de compromiso", 
+      "Intento negociar con todos sus problemas y los míos"
+    ]   
+  },
+  {
+    "id": 3,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Habitualmente soy muy firme en perseguir mis objetivos", 
+      "Puedo tratar de mitigar los sentimientos del otro y preservar nuestra relación"
+    ]
+  },
+  {
+    "id": 4,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [ 
+      "Trato de encontrar una solución de compromiso",
+      "A veces sacrifico mis propios deseos por los de los otros"
+    ]
+  },
+  {
+    "id": 5,
+    "type": "single_choice", 
+    "question": "Seleccionela opcion que usted usuaria con mayor probabilidad",
+    "options":[
+      "Busco siempre los aportes del otro para encontrar soluciones a los problemas", 
+      "Trato de hacer lo necesario para evitar tensiones inútiles"
+    ]
+  },
+  {
+    "id": 6,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Trato de evitar crearme situaciones desagradables a mi mismo", 
+      "Trato de ganar mi posición"
+    ]    
+  },
+    {
+      "id": 7,
+      "type": "single_choice", 
+      "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+      "options": [
+        "Trato de posponer el problema hasta que haya tenido un tiempo para reflexionar", 
+        "Resigno algunos puntos en el intercambio con los otros"
+      ]
+  },
+  {
+    "id": 8,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Habitualmente soy firme en el logro de mis objetivos", 
+      "Pongo atención en dejar todo claro desde un principio"
+    ]
+  },
+  {
+    "id": 9,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [ 
+      "Siento que preocuparse de las diferencias no siempre vale la pena", 
+      "Hay cierto esfuerzo para que las cosas hagan mi forma"
+  ]
+  },
+  {
+    "id": 10,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [ 
+      "Soy firme al perseguir mis objetivos", 
+      "Trato de encontrar una solución de compromisos"
+    ] 
+  },
+  {
+    "id": 11,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Intento colocar todos los problemas y conflictos en cuestión sobre la mesa", 
+      "Trato de mitigar los sentimientos del otro y preservar nuestra relación"
+    ] 
+  },
+  {
+    "id": 12,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "A veces evito tomar posición que pueda crear controversias", 
+      "Respeto la posición del otro si este respeta la mía"
+    ]
+  },
+  {
+    "id": 13,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+       "Propongo un campo intermedio", 
+       "Presiono para que mis puntos queden claro"
+    ]
+  },
+  {
+    "id": 14,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Trato de mitigar los sentimientos del otro y preservar nuestra relación", 
+      "Trato de demostrarle al otro la lógica y los beneficios de mi posición"
+    ]
+  },
+  {
+    "id": 15,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Trato de mitigar los sentimientos del otro y preservar nuestra relación", 
+      "Trato de hacer lo necesario para evitar tensiones"
+    ]
+  },
+  {
+    "id": 16,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Trato de no herir los sentimientos del otro", 
+      "Trato de convencer a la otra persona de los méritos de mi posición"
+    ]
+  },
+  {
+    "id": 17,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Habitualmente soy firme al perseguir mis objetivos", 
+      "Trato de hacer lo necesario para evitar tensiones"
+    ] 
+  },
+  {
+    "id": 18,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Si los hace feliz dejo que mantengan sus posiciones", 
+      "Dejo a la gente mantener algo de sus posiciones si ellos me dejan mantener algo de las mías"
+    ] 
+  },
+  {
+    "id": 19,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Intento plantear todos los problemas abiertamente", 
+      "Trato de posponer el asunto hasta haber tenido tiempo de reflexionar"
+    ] 
+  },
+  {
+    "id": 20,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [ 
+      "Trato de elaborar y encontrar soluciones inmediatas a los problemas", 
+      "Trato de encontrar una combinación justa de ganancia y pérdida para ambos"
+    ] 
+  },
+  {
+    "id": 21,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [ 
+      "Al abordar las negociaciones, trato de ser considerado con respecto a los deseos de las otras personas", 
+      "Siempre me inclino hacia una discusión directa del problema"
+    ]
+  },
+  {
+    "id": 22,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Trato de encontrar una posición que sea intermedia entre las de otros y las mías", 
+      "Expreso claramente mis deseos"
+    ]  
+  },
+  {
+   "id": 23,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [ 
+      "Siempre estoy preocupado por satisfacer todos mis deseos", 
+      "Hay veces en que dejo que otros tomen la responsabilidad de resolver los problemas"
+    ]
+  },
+  {
+    "id": 24,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [ 
+      "Si la posición de la otra persona parece ser muy importante para ella trato de complacer sus deseos", 
+      "Trato de que la otra persona se doblegue para lograr un compromiso"
+    ]
+  },
+  {
+    "id": 25,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Trato de mostrarle al otro la lógica y beneficios de mi posición", 
+      "Al abordar negociaciones, trato de ser considerado con los deseos de los otros"
+    ]
+  },
+  {
+    "id": 26,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Propongo un campo intermedio", 
+      "Casi siempre estoy preocupado por satisfacer todos mis deseos"
+    ]
+  },
+  {
+    "id": 27,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [ 
+      "A veces evito tomar posiciones que puedan crear controversias", 
+      "Si hace feliz al otro dejo que mantenga sus propias posturas"
+    ]    
+  },
+  {
+    "id": 28,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Habitualmente soy firme en perseguir mis objetivos", 
+      "Habitualmente busco la ayuda del otro para encontrar y elaborar soluciones"
+    ]
+  },
+  {
+    "id": 29,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [ 
+      "Propongo un campo intermedio", 
+      "Siento que no siempre vale la pena preocuparse por las diferencias"
+    ]
+  },
+  {
+    "id": 30,
+    "type": "single_choice", 
+    "question": "Seleccione la opcion que usted usuaria con mayor probabilidad",
+    "options": [
+      "Trato de no herir los sentimientos de los otros", 
+      "Siempre comparto el problema con otra persona de modo que podamos encontrar una solución"
+    ]
+  },
+  {
+    "id": 31,
+    "type": "frequency",
+    "question": "Mantengo serenidad ante las dificultades", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 32, 
+    "type": "frequency",
+    "question": "Cuando estoy en problemas confío en que lo resolveré", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 33,
+    "type": "frequency",
+    "question":"Cuando estoy ante un problema, normalmente analizo con tranquilidad la causa del problema", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 34,
+    "type": "frequency",
+    "question": "Reconozco mis errores sin sentirme mal, y trato de solucionarlo", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 35,
+    "type": "frequency",
+    "question": "Cuando realizo una actividad sin lograr lo esperado, aun así, siento la satisfacción de haberlo intentado", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+   "id": 36,
+    "type": "frequency",
+    "question": "Me siento motivado a continuar con mis propósitos", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 37, 
+    "type": "frequency",
+    "question": "Cuando hay un problema, reacciono con calma sin enojarme", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 38,
+    "type": "frequency",
+    "question": "Cuando me enfrento a un problema, no me rindo fácilmente", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 39,
+    "type": "frequency",
+    "question": "Asumir varias actividades al mismo tiempo y no lograr terminarlo me genera mucha preocupación", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 40, 
+    "type": "frequency",
+    "question": "Cuando no cumplo con mis compromisos me siento preocupado(a)", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 41,
+    "type": "frequency",
+    "question": "Generalmente cuando tengo varios trabajos en mi trabajo los culmino sin sentirme muy cansado", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 42,
+    "type": "frequency",
+    "question": "Cuando las personas me critican en mi trabajo, normalmente les refuto sin ofenderlos ni sentirme mal", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 43,
+    "type": "frequency",
+    "question": "Me doy cuenta fácilmente de lo que siento frente a situaciones de presión laboral y puedo manejarlo adecuadamente", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 44,
+    "type": "frequency",
+    "question": "A pesar de tener resultados adversos en mis actividades de trabajo o estudio, siento satisfacción si he dado lo mejor de mí", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 45,
+    "type": "frequency",
+    "question": "Cuando no entiendo una tarea, me disgusto fácilmente", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 46,
+    "type": "frequency",
+    "question": "Normalmente me relaciono sin dificultades con personas desconocidas en reuniones sociales", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 47,
+    "type": "frequency",
+    "question": "Habitualmente manejo mis impulsos frente a problemas", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 48,
+    "type": "frequency",
+    "question": "Generalmente reacciono con tranquilidad ante las diferencias que tengo con mis amigos", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 49,
+    "type": "frequency",
+    "question": "Generalmente disfruto la presencia de mis amigos", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 50,
+    "type": "frequency",
+    "question": "Cuando existe un problema con alguien normalmente controlo mis impulsos", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 51,
+    "type": "single_choice",
+    "question": "Reacciono con prudencia en circunstancias difíciles frente a mis amigos", 
+    "options": [
+      "Always",
+      "Often",
+      "Rarely",
+      "Never"
+    ]
+  },
+  {
+    "id": 52,
+    "type": "single_choice",
+    "question": "¿Ha sido capaz de concentrarse en lo que está haciendo?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 53,
+    "type": "single_choice",
+    "question": "¿Ha perdido mucho sueño por preocupaciones?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 54,
+    "type": "single_choice",
+    "question": "¿Se ha sentido constantemente bajo presión?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 55, 
+    "type": "single_choice",
+    "question": "¿Ha sentido que no puede superar sus dificultades?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 56,
+    "type": "single_choice",
+    "question": "¿Ha sido capaz de disfrutar de sus actividades diarias?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 57,
+    "type": "single_choice",
+    "question": "¿Ha sido capaz de enfrentar sus problemas?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 58,
+    "type": "single_choice",
+    "question": "¿Se ha sentido infeliz y deprimido?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 59,
+    "type": "single_choice",
+    "question": "¿Ha perdido confianza en sí mismo?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+   "id": 60,
+    "type": "single_choice",
+    "question": "¿Ha pensado en sí mismo como una persona inútil?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 61,
+    "type": "single_choice",
+    "question": "¿Se ha sentido razonablemente feliz, considerando todas las circunstancias?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 62,
+    "type": "single_choice",
+    "question": "¿Ha sido capaz de tomar decisiones?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 63,
+    "type": "single_choice",
+    "question": "¿Ha sido capaz de desempeñar su papel en la vida?",
+    "options": [
+      "Less than usual",
+      "No more than usual",
+      "More than usual",
+      "Much more than usual"
+    ]
+  },
+  {
+    "id": 64,
+    "type": "single_choice",
+    "question": "Es usted un maestro de primaria y uno de sus alumnos le ofrece un costoso obsequio con el fin de obtener una mayor calificación usted:",
+    "options": [
+      "Le dedicaría tiempo extra para nivelarlo",
+      "Lo rechazaría amablemente y lo invitaría a estudiar",
+      "Aceptaría el presente y le daría la calificación deseada por su alumno, porque usted sabe que es inteligente",
+      "Llamaría a sus padres para que paguen clases particulares"
+    ]
+  },
+  {
+    "id": 65,
+    "type": "single_choice",
+    "question": "Al conducir su automóvil por descuido usted se pasa un alto, el agente de tránsito lo detiene y para permitirle circular nuevamente, le solicita cierta suma de dinero usted:",
+    "options": [
+      "Arranca su automóvil y deja al agente de tránsito",
+      "Trata de llegar a un acuerdo encaminado a disminuir la cantidad de dinero",
+      "Pide le sea levantada la infracción pertinente",
+      "Amenaza al agente con reportarlo con sus superiores"
+    ]
+  },
+  {
+    "id": 66,
+    "type": "single_choice",
+    "question": "Si al llegar a su trabajo encuentra en el baño un reloj en el lavabo usted:",
+    "options": [
+      "Trataría de encontrar a su dueño",
+      "Lo reporta a sus superiores y lo entrega",
+      "No hace ningún comentario y espera a que lo busquen",
+      "Lo deja donde lo encontró"
+    ]
+  },
+  {
+    "id": 67,
+    "type": "single_choice",
+    "question":"Un amigo suyo desea obtener un ascenso dentro de su trabajo, usted le aconseja:",
+    "options": [
+      "Que sea cumplido y eficiente",
+      "Que busque cuales son los errores del jefe para que demuestre que él no es perfecto",
+      "Que prometa una manda a su santo de preferencia",
+      "Que ofrezca una excelente comida a los dirigentes de la empresa"
+    ]
+  },
+  {
+    "id": 68,
+    "type": "single_choice",
+    "question": "Si Luis al llegar a su casa observa que le están robando las llantas al automóvil de su vecino:",
+    "options": [
+      "Llamaría a la policía",
+      "Llamaría a su vecino",
+      "Pediría a los asaltantes parte del beneficio que obtendrán en el robo, por guardar silencio",
+      "Mejor no haría nada y se metería a su casa"
+    ]
+  },
+  {
+    "id": 69,
+    "type": "single_choice",
+    "question": "Al salir de viaje sus vecinos le piden cuidar su casa, durante su ausencia usted:",
+    "options": [
+      "Les dice que no debido a que se encuentra muy ocupado en esos días",
+      "Atiende con gusto la petición de sus vecinos",
+      "A cambio de sus servicios les solicita prestado el automóvil que no utilizarán en su viaje",
+      "Asiste al módulo de vigilancia local, para que le brinde mayor seguridad"
+    ]
+  },
+  {
+    "id": 70,
+    "type": "single_choice",
+    "question": "Si encuentra a un niño llorando sólo en una tienda comercial usted:",
+    "options": [
+      "Lo ayudaría a buscar a su familia en la tienda",
+      "Lo llevaría al área de servicios generales para que ahí espere a que lo ayuden",
+      "Pasaría de largo porque usted tiene prisa",
+      "Lo llevaría a su casa, pero le cobra a la mamá por el tiempo que usted perdió por andarla buscando"
+    ]
+  },
+  {
+    "id": 71,
+    "type": "single_choice",
+    "question": "Su hijo ha dejado sus estudios por un tiempo:",
+    "options": [
+      "Le sugiere que vea a los maestros para que les proponga que lo ayuden",
+      "Que haga lo que quiera pues ya está grande",
+      "Que curse nuevamente el año para que pase las materias reprobadas",
+      "Darle apoyo económico y moral para que supere este tropiezo en sus estudios"
+    ]
+  },
+  {
+    "id": 72,
+    "type": "single_choice",
+    "question": "La familia de un amigo tiene un hijo drogadicto y es amigo de su hijo desde pequeño, al saberlo usted:",
+    "options": [
+      "Le pide a su hijo que no lo vuelva a ver",
+      "Le sugiere a su familia que lo lleven a Centros de Integración Juvenil para que lo ayuden",
+      "Si el muchacho ya es drogadicto le pide le obsequie un reloj que tanto le gusta a su hijo para no decírselo a sus padres",
+      "Lo lleva a un centro de rehabilitación junto con su hijo para que sienta que lo apoya y no es rechazado"
+    ]
+  },
+  {
+    "id": 73,
+    "type": "single_choice",
+    "question": "Quiere pedir un favor a un conocido, que beneficiará a la empresa para la cual trabaja:",
+    "options": [
+      "Le explica los motivos y necesidades por las cuales requiere ese favor",
+      "Le pide el favor sin mayor explicación",
+      "Le hace creer que él será el más beneficiado al ofrecerle una retribución",
+      "Le sugiere a su jefe que sea él quien se lo pida y explique la necesidad"
+    ]
+  },
+  {
+    "id": 74,
+    "type": "single_choice",
+    "question": "Si usted tuviera la habilidad y condiciones adecuadas, ¿a qué se dedicaría?",
+    "options": [
+      "A modificar todos los jardines de la ciudad",
+      "A obtener logros por medio de la política",
+      "A prestar dinero a altos intereses",
+      "A cumplir con las obligaciones que su religión le impone"
+    ]
+  },
+  {
+    "id": 75,
+    "type": "single_choice",
+    "question": "Cuando ve un accidente usted:",
+    "options": [
+      "Se pone a orar con la persona accidentada",
+      "Pide una ambulancia",
+      "Cuida las pertenencias del accidentado",
+      "Trata de detener al culpable"
+    ]
+  },
+  {
+    "id": 76,
+    "type": "single_choice",
+    "question": "Prefiere una amistad que:",
+    "options": [
+      "Sea activo y le guste reparar defectos en su hogar",
+      "Se interese por ser líder en el sindicato del cual forma parte",
+      "Asistir con frecuencia a eventos religiosos",
+      "Le interesa emprender negocios"
+    ]
+  },
+  {
+    "id": 77,
+    "type": "single_choice",
+    "question": "Un buen gobierno debería:",
+    "options": [
+      "Ayudar a las clases necesitadas",
+      "Ampliar las zonas turísticas de cinco estrellas",
+      "Buscar a los mejores líderes de su partido",
+      "Permitir que la religión sea oficial"
+    ]
+  },
+  {
+    "id": 78,
+    "type": "single_choice",
+    "question": "Un empleado de 60 años que ha sido leal a la empresa durante 28 años, se queja del exceso de trabajo, lo mejor sería:",
+    "options": [
+      "Pedir un aumento de sueldo",
+      "Recurrir al sindicato para que éste le ayude",
+      "Que recurra a su guía espiritual para que le diga cómo se le debe ayudar y su trabajo no se le haga pesado",
+      "Que solicite una persona para que le ayude"
+    ]
+  },
+  {
+    "id": 79,
+    "type": "single_choice",
+    "question": "Usted visita a un amigo enfermo y lo mejor sería:",
+    "options": [
+      "Que lo convenza de acudir al seguro social para que su atención médica no le sea costosa",
+      "Proponerle su ayuda cuando él tenga que acudir a sus citas médicas",
+      "Que como todo le ha salido mal últimamente vea a una persona para que le realice una limpia",
+      "Decirle lo importante que fueron las juntas de vecinos ahora que él estuvo hospitalizado"
+    ]
+  },
+  {
+    "id": 80,
+    "type": "single_choice",
+    "question": "Si usted viviera en provincia y tuviera más entradas de las que necesita, ¿qué preferiría hacer con el dinero?",
+    "options": [
+      "Hacerlo producir para ayudar al desarrollo de la industria",
+      "Donar el dinero para la construcción de una iglesia",
+      "Darlo a una sociedad para el beneficio de las familias humildes del poblado",
+      "Apoyar ayuda al partido político con el cual simpatiza"
+    ]
+  },
+  {
+    "id": 81,
+    "type": "single_choice",
+    "question": "¿A qué actividad prefiere dedicarse durante sus vacaciones?",
+    "options": [
+      "Obtener experiencia en otro negocio que no sea el propio",
+      "Participar en la campaña política de diputados que se va a efectuar en su localidad",
+      "Asistir a un retiro organizado por la iglesia",
+      "Visitar un lugar que no conoce, en compañía de su familia"
+    ]
+  },
+  {
+    "id": 82,
+    "type": "single_choice",
+    "question": "Su esposa le comenta que al terminar de realizar sus actividades cotidianas le queda mucho tiempo libre, usted le sugiere:",
+    "options": [
+      "Que emplee su tiempo como catequista de la iglesia",
+      "Que venda artículos femeninos",
+      "Que promueva juntas entre los vecinos encaminadas a resolver los problemas de la comunidad",
+      "Que asista con sus hijos a centros recreativos si fuera posible"
+    ]
+  },
+  {
+    "id": 83,
+    "type": "single_choice",
+    "question": "¿Cuál de las siguientes ocupaciones escogería?",
+    "options": [
+      "Trabajar en forma independiente",
+      "Como encargado del departamento en el cual a usted le gusta",
+      "Dedicarse a estudios de la iglesia",
+      "Trabajador social"
+    ]
   }
-},
-{
-  "test": "Valores",
-  "preguntas": [
-    {
-      "id": 1,
-      "pregunta": "Es usted un maestro de primaria y uno de sus alumnos le ofrece un costoso obsequio con el fin de obtener una mayor calificación usted:",
-      "opciones": {
-        "A": "Le dedicaría tiempo extra para nivelarlo",
-        "B": "Lo rechazaría amablemente y lo invitaría a estudiar",
-        "C": "Aceptaría el presente y le daría la calificación deseada por su alumno, porque usted sabe que es inteligente",
-        "D": "Llamaría a sus padres para que paguen clases particulares"
-      }
-    },
-    {
-      "id": 2,
-      "pregunta": "Al conducir su automóvil por descuido usted se pasa un alto, el agente de tránsito lo detiene y para permitirle circular nuevamente, le solicita cierta suma de dinero usted:",
-      "opciones": {
-        "A": "Arranca su automóvil y deja al agente de tránsito",
-        "B": "Trata de llegar a un acuerdo encaminado a disminuir la cantidad de dinero",
-        "C": "Pide le sea levantada la infracción pertinente",
-        "D": "Amenaza al agente con reportarlo con sus superiores"
-      }
-    },
-    {
-      "id": 3,
-      "pregunta": "Si al llegar a su trabajo encuentra en el baño un reloj en el lavabo usted:",
-      "opciones": {
-        "A": "Trataría de encontrar a su dueño",
-        "B": "Lo reporta a sus superiores y lo entrega",
-        "C": "No hace ningún comentario y espera a que lo busquen",
-        "D": "Lo deja donde lo encontró"
-      }
-    },
-    {
-      "id": 4,
-      "pregunta": "Un amigo suyo desea obtener un ascenso dentro de su trabajo, usted le aconseja:",
-      "opciones": {
-        "A": "Que sea cumplido y eficiente",
-        "B": "Que busque cuales son los errores del jefe para que demuestre que él no es perfecto",
-        "C": "Que prometa una manda a su santo de preferencia",
-        "D": "Que ofrezca una excelente comida a los dirigentes de la empresa"
-      }
-    },
-    {
-      "id": 5,
-      "pregunta": "Si Luis al llegar a su casa observa que le están robando las llantas al automóvil de su vecino:",
-      "opciones": {
-        "A": "Llamaría a la policía",
-        "B": "Llamaría a su vecino",
-        "C": "Pediría a los asaltantes parte del beneficio que obtendrán en el robo, por guardar silencio",
-        "D": "Mejor no haría nada y se metería a su casa"
-      }
-    },
-    {
-      "id": 6,
-      "pregunta": "Al salir de viaje sus vecinos le piden cuidar su casa, durante su ausencia usted:",
-      "opciones": {
-        "A": "Les dice que no debido a que se encuentra muy ocupado en esos días",
-        "B": "Atiende con gusto la petición de sus vecinos",
-        "C": "A cambio de sus servicios les solicita prestado el automóvil que no utilizarán en su viaje",
-        "D": "Asiste al módulo de vigilancia local, para que le brinde mayor seguridad"
-      }
-    },
-    {
-      "id": 7,
-      "pregunta": "Si encuentra a un niño llorando sólo en una tienda comercial usted:",
-      "opciones": {
-        "A": "Lo ayudaría a buscar a su familia en la tienda",
-        "B": "Lo llevaría al área de servicios generales para que ahí espere a que lo ayuden",
-        "C": "Pasaría de largo porque usted tiene prisa",
-        "D": "Lo llevaría a su casa, pero le cobra a la mamá por el tiempo que usted perdió por andarla buscando"
-      }
-    },
-    {
-      "id": 8,
-      "pregunta": "Su hijo ha dejado sus estudios por un tiempo:",
-      "opciones": {
-        "A": "Le sugiere que vea a los maestros para que les proponga que lo ayuden",
-        "B": "Que haga lo que quiera pues ya está grande",
-        "C": "Que curse nuevamente el año para que pase las materias reprobadas",
-        "D": "Darle apoyo económico y moral para que supere este tropiezo en sus estudios"
-      }
-    },
-    {
-      "id": 9,
-      "pregunta": "La familia de un amigo tiene un hijo drogadicto y es amigo de su hijo desde pequeño, al saberlo usted:",
-      "opciones": {
-        "A": "Le pide a su hijo que no lo vuelva a ver",
-        "B": "Le sugiere a su familia que lo lleven a Centros de Integración Juvenil para que lo ayuden",
-        "C": "Si el muchacho ya es drogadicto le pide le obsequie un reloj que tanto le gusta a su hijo para no decírselo a sus padres",
-        "D": "Lo lleva a un centro de rehabilitación junto con su hijo para que sienta que lo apoya y no es rechazado"
-      }
-    },
-    {
-      "id": 10,
-      "pregunta": "Quiere pedir un favor a un conocido, que beneficiará a la empresa para la cual trabaja:",
-      "opciones": {
-        "A": "Le explica los motivos y necesidades por las cuales requiere ese favor",
-        "B": "Le pide el favor sin mayor explicación",
-        "C": "Le hace creer que él será el más beneficiado al ofrecerle una retribución",
-        "D": "Le sugiere a su jefe que sea él quien se lo pida y explique la necesidad"
-      }
-    }
-  ]
-},
-{
-  "test": "Intereses",
-  "preguntas": [
-    {
-      "id": 1,
-      "pregunta": "Si usted tuviera la habilidad y condiciones adecuadas, ¿a qué se dedicaría?",
-      "opciones": {
-        "A": "A modificar todos los jardines de la ciudad",
-        "B": "A obtener logros por medio de la política",
-        "C": "A prestar dinero a altos intereses",
-        "D": "A cumplir con las obligaciones que su religión le impone"
-      }
-    },
-    {
-      "id": 2,
-      "pregunta": "Cuando ve un accidente usted:",
-      "opciones": {
-        "A": "Se pone a orar con la persona accidentada",
-        "B": "Pide una ambulancia",
-        "C": "Cuida las pertenencias del accidentado",
-        "D": "Trata de detener al culpable"
-      }
-    },
-    {
-      "id": 3,
-      "pregunta": "Prefiere una amistad que:",
-      "opciones": {
-        "A": "Sea activo y le guste reparar defectos en su hogar",
-        "B": "Se interese por ser líder en el sindicato del cual forma parte",
-        "C": "Asistir con frecuencia a eventos religiosos",
-        "D": "Le interesa emprender negocios"
-      }
-    },
-    {
-      "id": 4,
-      "pregunta": "Un buen gobierno debería:",
-      "opciones": {
-        "A": "Ayudar a las clases necesitadas",
-        "B": "Ampliar las zonas turísticas de cinco estrellas",
-        "C": "Buscar a los mejores líderes de su partido",
-        "D": "Permitir que la religión sea oficial"
-      }
-    },
-    {
-      "id": 5,
-      "pregunta": "Un empleado de 60 años que ha sido leal a la empresa durante 28 años, se queja del exceso de trabajo, lo mejor sería:",
-      "opciones": {
-        "A": "Pedir un aumento de sueldo",
-        "B": "Recurrir al sindicato para que éste le ayude",
-        "C": "Que recurra a su guía espiritual para que le diga cómo se le debe ayudar y su trabajo no se le haga pesado",
-        "D": "Que solicite una persona para que le ayude"
-      }
-    },
-    {
-      "id": 6,
-      "pregunta": "Usted visita a un amigo enfermo y lo mejor sería:",
-      "opciones": {
-        "A": "Que lo convenza de acudir al seguro social para que su atención médica no le sea costosa",
-        "B": "Proponerle su ayuda cuando él tenga que acudir a sus citas médicas",
-        "C": "Que como todo le ha salido mal últimamente vea a una persona para que le realice una limpia",
-        "D": "Decirle lo importante que fueron las juntas de vecinos ahora que él estuvo hospitalizado"
-      }
-    },
-    {
-      "id": 7,
-      "pregunta": "Si usted viviera en provincia y tuviera más entradas de las que necesita, ¿qué preferiría hacer con el dinero?",
-      "opciones": {
-        "A": "Hacerlo producir para ayudar al desarrollo de la industria",
-        "B": "Donar el dinero para la construcción de una iglesia",
-        "C": "Darlo a una sociedad para el beneficio de las familias humildes del poblado",
-        "D": "Apoyar ayuda al partido político con el cual simpatiza"
-      }
-    },
-    {
-      "id": 8,
-      "pregunta": "¿A qué actividad prefiere dedicarse durante sus vacaciones?",
-      "opciones": {
-        "A": "Obtener experiencia en otro negocio que no sea el propio",
-        "B": "Participar en la campaña política de diputados que se va a efectuar en su localidad",
-        "C": "Asistir a un retiro organizado por la iglesia",
-        "D": "Visitar un lugar que no conoce, en compañía de su familia"
-      }
-    },
-    {
-      "id": 9,
-      "pregunta": "Su esposa le comenta que al terminar de realizar sus actividades cotidianas le queda mucho tiempo libre, usted le sugiere:",
-      "opciones": {
-        "A": "Que emplee su tiempo como catequista de la iglesia",
-        "B": "Que venda artículos femeninos",
-        "C": "Que promueva juntas entre los vecinos encaminadas a resolver los problemas de la comunidad",
-        "D": "Que asista con sus hijos a centros recreativos si fuera posible"
-      }
-    },
-    {
-      "id": 10,
-      "pregunta": "¿Cuál de las siguientes ocupaciones escogería?",
-      "opciones": {
-        "A": "Trabajar en forma independiente",
-        "B": "Como encargado del departamento en el cual a usted le gusta",
-        "C": "Dedicarse a estudios de la iglesia",
-        "D": "Trabajador social"
-      }
-    }
-  ]
-}
 ]
