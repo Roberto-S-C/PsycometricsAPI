@@ -274,10 +274,10 @@
     "type": "frequency",
     "question": "Mantengo serenidad ante las dificultades", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -285,10 +285,10 @@
     "type": "frequency",
     "question": "Cuando estoy en problemas confío en que lo resolveré", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -296,10 +296,10 @@
     "type": "frequency",
     "question":"Cuando estoy ante un problema, normalmente analizo con tranquilidad la causa del problema", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -307,10 +307,10 @@
     "type": "frequency",
     "question": "Reconozco mis errores sin sentirme mal, y trato de solucionarlo", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -318,10 +318,10 @@
     "type": "frequency",
     "question": "Cuando realizo una actividad sin lograr lo esperado, aun así, siento la satisfacción de haberlo intentado", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -329,10 +329,10 @@
     "type": "frequency",
     "question": "Me siento motivado a continuar con mis propósitos", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -340,10 +340,10 @@
     "type": "frequency",
     "question": "Cuando hay un problema, reacciono con calma sin enojarme", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -351,10 +351,10 @@
     "type": "frequency",
     "question": "Cuando me enfrento a un problema, no me rindo fácilmente", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -362,10 +362,10 @@
     "type": "frequency",
     "question": "Asumir varias actividades al mismo tiempo y no lograr terminarlo me genera mucha preocupación", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -373,10 +373,10 @@
     "type": "frequency",
     "question": "Cuando no cumplo con mis compromisos me siento preocupado(a)", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -384,10 +384,10 @@
     "type": "frequency",
     "question": "Generalmente cuando tengo varios trabajos en mi trabajo los culmino sin sentirme muy cansado", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -395,10 +395,10 @@
     "type": "frequency",
     "question": "Cuando las personas me critican en mi trabajo, normalmente les refuto sin ofenderlos ni sentirme mal", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -406,10 +406,10 @@
     "type": "frequency",
     "question": "Me doy cuenta fácilmente de lo que siento frente a situaciones de presión laboral y puedo manejarlo adecuadamente", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -417,10 +417,10 @@
     "type": "frequency",
     "question": "A pesar de tener resultados adversos en mis actividades de trabajo o estudio, siento satisfacción si he dado lo mejor de mí", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -428,10 +428,10 @@
     "type": "frequency",
     "question": "Cuando no entiendo una tarea, me disgusto fácilmente", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -439,10 +439,10 @@
     "type": "frequency",
     "question": "Normalmente me relaciono sin dificultades con personas desconocidas en reuniones sociales", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -450,10 +450,10 @@
     "type": "frequency",
     "question": "Habitualmente manejo mis impulsos frente a problemas", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -461,10 +461,10 @@
     "type": "frequency",
     "question": "Generalmente reacciono con tranquilidad ante las diferencias que tengo con mis amigos", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -472,10 +472,10 @@
     "type": "frequency",
     "question": "Generalmente disfruto la presencia de mis amigos", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -483,10 +483,10 @@
     "type": "frequency",
     "question": "Cuando existe un problema con alguien normalmente controlo mis impulsos", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -494,10 +494,10 @@
     "type": "single_choice",
     "question": "Reacciono con prudencia en circunstancias difíciles frente a mis amigos", 
     "options": [
-      "Always",
-      "Often",
-      "Rarely",
-      "Never"
+      "Siempre",
+      "Usualmente",
+      "Raramente",
+      "Nunca"
     ]
   },
   {
@@ -505,10 +505,10 @@
     "type": "single_choice",
     "question": "¿Ha sido capaz de concentrarse en lo que está haciendo?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -516,10 +516,10 @@
     "type": "single_choice",
     "question": "¿Ha perdido mucho sueño por preocupaciones?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -527,10 +527,10 @@
     "type": "single_choice",
     "question": "¿Se ha sentido constantemente bajo presión?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -538,10 +538,10 @@
     "type": "single_choice",
     "question": "¿Ha sentido que no puede superar sus dificultades?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -549,10 +549,10 @@
     "type": "single_choice",
     "question": "¿Ha sido capaz de disfrutar de sus actividades diarias?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -560,10 +560,10 @@
     "type": "single_choice",
     "question": "¿Ha sido capaz de enfrentar sus problemas?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -571,10 +571,10 @@
     "type": "single_choice",
     "question": "¿Se ha sentido infeliz y deprimido?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -582,10 +582,10 @@
     "type": "single_choice",
     "question": "¿Ha perdido confianza en sí mismo?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -593,10 +593,10 @@
     "type": "single_choice",
     "question": "¿Ha pensado en sí mismo como una persona inútil?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -604,10 +604,10 @@
     "type": "single_choice",
     "question": "¿Se ha sentido razonablemente feliz, considerando todas las circunstancias?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -615,10 +615,10 @@
     "type": "single_choice",
     "question": "¿Ha sido capaz de tomar decisiones?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
@@ -626,10 +626,10 @@
     "type": "single_choice",
     "question": "¿Ha sido capaz de desempeñar su papel en la vida?",
     "options": [
-      "Less than usual",
-      "No more than usual",
-      "More than usual",
-      "Much more than usual"
+      "Menos de lo usual",
+      "No más de lo usual",
+      "Más de lo usual",
+      "Mucho más de lo usual"
     ]
   },
   {
