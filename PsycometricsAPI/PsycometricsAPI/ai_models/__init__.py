@@ -1,0 +1,2 @@
+class PressureAnalysisModel:
+    pass
