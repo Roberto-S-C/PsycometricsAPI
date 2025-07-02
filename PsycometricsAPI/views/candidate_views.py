@@ -5,6 +5,8 @@ from bson import ObjectId
 from ..db.mongo import candidate_collection, result_collection
 from ..serializers import CandidateSerializer
 from ..utils.objectIdConversion import convert_objectid
+import random
+import string
 
 
 @api_view(["GET", "POST"])
@@ -56,6 +58,12 @@ def candidate_list(request):
                 status=status.HTTP_409_CONFLICT
             )
 
+        # Generate a unique 6-character code
+        while True:
+            random_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+            if not candidate_collection.find_one({"code": random_code}):
+                break
+
         # Set hr ObjectId (hardcoded as requested)
         hr_object_id = ObjectId("68634fee4a86e24702186e63")
 
@@ -67,6 +75,7 @@ def candidate_list(request):
             "gender": data["gender"],
             "phone": data["phone"],
             "hr": hr_object_id,
+            "code": random_code,
         }
 
         result = candidate_collection.insert_one(candidate_doc)
@@ -80,6 +89,7 @@ def candidate_list(request):
             "email": data["email"],
             "phone": data["phone"],
             "hr_id": str(hr_object_id),
+            "code": random_code,
         }
 
         return Response(response_data, status=status.HTTP_201_CREATED)
