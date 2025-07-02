@@ -10,7 +10,9 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "192.168.100.73",
-    "18.206.182.194"
+    "18.206.182.194",
+    "psycometrics.app",
+    "www.psycometrics.app"
 ]
 
 INSTALLED_APPS = [
