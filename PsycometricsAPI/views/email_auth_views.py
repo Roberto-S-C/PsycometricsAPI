@@ -2,18 +2,26 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth.models import User
-from django.contrib.auth.hashers import make_password
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.contrib.auth import authenticate
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from ..db.mongo import hr_collection
+import bcrypt
 
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def signup(request):
     data = request.data
+
+    # Validate required fields
+    required_fields = ["email", "password", "confirmPassword"]
+    for field in required_fields:
+        if field not in data or not data[field]:
+            return Response({
+                "status": "error",
+                "code": "MISSING_FIELD",
+                "message": f"{field} is required"
+            }, status=status.HTTP_400_BAD_REQUEST)
 
     # Validate email format
     try:
@@ -25,7 +33,7 @@ def signup(request):
             "message": "Invalid email address"
         }, status=status.HTTP_400_BAD_REQUEST)
 
-    if User.objects.filter(email=data['email']).exists():
+    if hr_collection.find_one({"email": data['email']}):
         return Response({
             "status": "error",
             "code": "EMAIL_EXISTS",
@@ -46,12 +54,8 @@ def signup(request):
             "message": "Passwords do not match"
         }, status=status.HTTP_400_BAD_REQUEST)
 
-    # Create Django User in SQL DB
-    user = User.objects.create(
-        username=data['email'],
-        email=data['email'],
-        password=make_password(data['password'])
-    )
+    # Hash password with bcrypt
+    hashed_pw = bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
     # Create HR in MongoDB
     hr_doc = {
@@ -62,20 +66,20 @@ def signup(request):
         "company": "",
         "email": data["email"],
         "phone": "",
-        "password": make_password(data["password"]),
+        "password": hashed_pw,
     }
 
     inserted_hr = hr_collection.insert_one(hr_doc)
-    hr = str(inserted_hr.inserted_id)
+    hr_id = str(inserted_hr.inserted_id)
 
     # Generate JWT containing MongoDB HR ID
-    refresh = RefreshToken.for_user(user)
-    refresh["hr"] = hr
+    refresh = RefreshToken()
+    refresh["hr"] = hr_id
 
     return Response({
         "refresh": str(refresh),
         "access": str(refresh.access_token),
-        "hr": hr
+        "hr": hr_id
     }, status=status.HTTP_201_CREATED)
 
 @api_view(["POST"])
@@ -91,26 +95,17 @@ def login(request):
             "message": "Email and password are required"
         }, status=status.HTTP_400_BAD_REQUEST)
 
-    # Authenticate against SQL user
-    user = authenticate(username=email, password=password)
-    if not user:
+    # Fetch HR in MongoDB
+    hr = hr_collection.find_one({"email": email})
+    if not hr or not bcrypt.checkpw(password.encode('utf-8'), hr["password"].encode('utf-8')):
         return Response({
             "status": "error",
             "code": "INVALID_CREDENTIALS",
             "message": "The email or password you entered is incorrect"
         }, status=status.HTTP_401_UNAUTHORIZED)
 
-    # Fetch matching HR in MongoDB
-    hr = hr_collection.find_one({"email": email})
-    if not hr:
-        return Response({
-            "status": "error",
-            "code": "PROFILE_NOT_FOUND",
-            "message": "HR profile not found in database"
-        }, status=status.HTTP_404_NOT_FOUND)
-
     # Create JWT containing the HR's MongoDB _id
-    refresh = RefreshToken.for_user(user)
+    refresh = RefreshToken()
     refresh["hr"] = str(hr["_id"])
 
     return Response({

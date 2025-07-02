@@ -5,11 +5,24 @@ from bson import ObjectId
 from ..serializers import ResultSerializer
 from ..db.mongo import result_collection
 from ..utils.objectIdConversion import convert_objectid
+from datetime import datetime
+import pytz
 
 @api_view(["GET", "POST"])
 def result_list(request):
     if request.method == "GET":
-        results = list(result_collection.find())
+        # Extract hr_id from JWT (SimpleJWT puts it in request.user or request.auth['hr'])
+        hr_id = None
+        # If you added hr_id as a custom claim in your JWT, it will be in request.auth
+        if hasattr(request, 'auth') and request.auth and 'hr' in request.auth:
+            hr_id = request.auth['hr']
+        elif hasattr(request.user, 'id'):
+            # fallback if using Django user model
+            hr_id = str(request.user.id)
+        if not hr_id:
+            return Response({"error": "HR id not found in token"}, status=401)
+
+        results = list(result_collection.find({"hr": ObjectId(hr_id)}))
         results = [convert_objectid(r) for r in results]
         return Response(results)
 
@@ -18,26 +31,29 @@ def result_list(request):
         if serializer.is_valid():
             validated = serializer.validated_data
 
-            validated["test"] = ObjectId(validated.pop("test_id"))
-            validated["hr"] = ObjectId(validated.pop("hr_id"))
-            validated["candidate"] = ObjectId(validated.pop("candidate_id"))
+            # Check if candidate_id already exists in the results
+            existing = result_collection.find_one({
+                "candidate_id": ObjectId(validated["candidate_id"])
+            })
+            if existing:
+                return Response(
+                    {"error": "Candidate has already submitted a test"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
 
-            inserted = result_collection.insert_one(validated)
-            validated["id"] = str(inserted.inserted_id)
+            completed_at = datetime.now(pytz.UTC)
 
-            response_data = {
-                "id": validated["id"],
-                "duration": validated["duration"],
-                "conflicts": validated["conflicts"],
-                "tolerance": validated["tolerance"],
-                "savic": validated["savic"],
-                "health": validated["health"],
-                "test": str(validated["test"]),
-                "hr": str(validated["hr"]),
-                "candidate": str(validated["candidate"]),
+            result_doc = {
+                "test_id": ObjectId(validated["test_id"]),
+                "candidate_id": ObjectId(validated["candidate_id"]),
+                "hr_id": ObjectId(validated["hr_id"]),
+                "completed_at": completed_at,
+                "responses": validated["responses"],
             }
-            return Response(response_data, status=status.HTTP_201_CREATED)
-        
+
+            result_collection.insert_one(result_doc)
+            return Response(status=status.HTTP_201_CREATED)
+
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(["GET", "DELETE"])
@@ -46,13 +62,15 @@ def result_detail(request, id):
         _id = ObjectId(id)
         result = result_collection.find_one({"_id": _id})
         if not result:
-            return Response({"error": "Result not found"}, status=404)
-    except:
-        return Response({"error": "Invalid ID"}, status=400)
+            return Response({"error": "Result not found"}, status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == "GET":
-        return Response(convert_objectid(result))
+        if request.method == "GET":
+            result = convert_objectid(result)
+            return Response(result)
 
-    elif request.method == "DELETE":
-        result_collection.delete_one({"_id": _id})
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        elif request.method == "DELETE":
+            result_collection.delete_one({"_id": _id})
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)

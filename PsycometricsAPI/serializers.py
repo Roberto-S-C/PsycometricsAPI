@@ -22,29 +22,28 @@ class CandidateSerializer(serializers.Serializer):
     hr_id = serializers.CharField()  # FK reference to HR
     code = serializers.CharField(max_length=50)
 
+class ResponseSerializer(serializers.Serializer):
+    question_id = serializers.CharField()
+    response = serializers.CharField()
+
 class ResultSerializer(serializers.Serializer):
     id = serializers.CharField(read_only=True)
-    duration = serializers.IntegerField()
-    conflicts = serializers.FloatField()
-    tolerance = serializers.FloatField()
-    savic = serializers.FloatField()
-    health = serializers.FloatField()
     test_id = serializers.CharField()
-    hr_id = serializers.CharField()
     candidate_id = serializers.CharField()
+    hr_id = serializers.CharField()
+    completed_at = serializers.DateTimeField(required=False)
+    responses = ResponseSerializer(many=True)
 
 class ResponseOptionSerializer(serializers.Serializer):
     option = serializers.CharField()
     value = serializers.IntegerField()
 
 class QuestionSerializer(serializers.Serializer):
+    id = serializers.IntegerField()
+    type = serializers.CharField()
     question = serializers.CharField()
-    category = serializers.CharField()
-    responses = ResponseOptionSerializer(many=True)
+    options = serializers.ListField(child=serializers.CharField())
 
 class TestSerializer(serializers.Serializer):
     id = serializers.CharField(read_only=True)
-    name = serializers.CharField()
-    description = serializers.CharField()
-    tags = serializers.ListField(child=serializers.CharField())
     questions = QuestionSerializer(many=True)

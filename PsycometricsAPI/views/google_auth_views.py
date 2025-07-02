@@ -3,8 +3,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.contrib.auth.models import User
-from django.conf import settings
 from ..db.mongo import hr_collection
 import requests
 
@@ -46,17 +44,9 @@ def google_auth(request):
     first_name = name_parts[0]
     last_name = name_parts[1] if len(name_parts) > 1 else ''
 
-    # Get or create user
-    try:
-        user = User.objects.get(email=email)
-    except User.DoesNotExist:
-        user = User.objects.create(
-            username=email,
-            email=email,
-            first_name=first_name,
-            last_name=last_name
-        )
-        # Create HR in MongoDB
+    # Get or create HR in MongoDB
+    hr = hr_collection.find_one({"email": email})
+    if not hr:
         hr_doc = {
             "first_name": first_name,
             "last_name": last_name,
@@ -66,11 +56,10 @@ def google_auth(request):
         inserted_hr = hr_collection.insert_one(hr_doc)
         hr_id = str(inserted_hr.inserted_id)
     else:
-        hr = hr_collection.find_one({"email": email})
-        hr_id = str(hr["_id"]) if hr else None
+        hr_id = str(hr["_id"])
 
     # Generate JWT
-    refresh = RefreshToken.for_user(user)
+    refresh = RefreshToken()
     refresh["hr"] = hr_id
 
     return Response({

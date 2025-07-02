@@ -1,10 +1,14 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 from bson import ObjectId
 from ..db.mongo import hr_collection, candidate_collection, result_collection
 from ..serializers import HRSerializer
 from ..utils.objectIdConversion import convert_objectid
+from rest_framework_simplejwt.authentication import JWTAuthentication
+import random
+import string
 
 
 @api_view(["GET", "POST"])
@@ -65,3 +69,48 @@ def hr_detail(request, id):
         hr_collection.delete_one({"_id": _id})
 
         return Response(status=204)
+
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def generate_candidate_code(request):
+    user = request.user
+    # Find HR by user email
+    hr = hr_collection.find_one({"email": user.email})
+    if not hr:
+        return Response({"error": "HR not found"}, status=404)
+    hr_id = str(hr["_id"])
+
+    # Generate unique 6-character code (uppercase letters and digits)
+    def generate_code():
+        return ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+
+    # Ensure code uniqueness in candidate_collection
+    for _ in range(10):  # Try up to 10 times
+        code = generate_code()
+        if not candidate_collection.find_one({"code": code}):
+            break
+    else:
+        return Response({"error": "Could not generate unique code"}, status=500)
+
+    # Create generic candidate
+    candidate_doc = {
+        "first_name": "Candidate",
+        "last_name": "Candidate",
+        "age": 0,
+        "gender": "",
+        "email": "",
+        "phone": "",
+        "hr": hr_id,
+        "code": code
+    }
+    inserted = candidate_collection.insert_one(candidate_doc)
+    candidate_doc["id"] = str(inserted.inserted_id)
+
+    return Response({
+        "status": "success",
+        "candidate": {
+            "id": candidate_doc["id"],
+            "code": code
+        }
+    }, status=201)
