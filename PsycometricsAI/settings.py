@@ -4,7 +4,7 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('DJANGO_SECRET_KEY')
-DEBUG = True
+DEBUG = False 
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -56,8 +56,4 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://192.168.100.73:3000",
-]
+CORS_ALLOW_ALL_ORIGINS = True 
