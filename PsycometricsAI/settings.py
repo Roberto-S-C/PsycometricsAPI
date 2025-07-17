@@ -1,10 +1,11 @@
 from pathlib import Path
 from decouple import config
+from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('DJANGO_SECRET_KEY')
-DEBUG = False 
+DEBUG = True 
 
 ALLOWED_HOSTS = [
     "localhost",
@@ -51,11 +52,18 @@ WSGI_APPLICATION = 'PsycometricsAI.wsgi.application'
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "PsycometricsAPI.authentication.CustomJwtAuthentication.CustomJWTAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
 }
 
-CORS_ALLOW_ALL_ORIGINS = True 
+CORS_ALLOW_ALL_ORIGINS = True
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(weeks=1),  # Access token lasts 1 week
+    "REFRESH_TOKEN_LIFETIME": timedelta(weeks=2),  # Refresh token lasts 2 weeks
+    "ROTATE_REFRESH_TOKENS": False,  # Optional: Set to True if you want to rotate refresh tokens
+    "BLACKLIST_AFTER_ROTATION": True,  # Optional: Blacklist old refresh tokens after rotation
+}

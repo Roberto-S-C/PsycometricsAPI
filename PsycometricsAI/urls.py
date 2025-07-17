@@ -3,7 +3,7 @@ from django.urls import path, include
 from PsycometricsAPI.views import candidate_views, hr_views, test_views, result_views, email_auth_views 
 from PsycometricsAPI.views.microsoft_auth_view import microsoft_auth
 from PsycometricsAPI.views.google_auth_views import google_auth
-from PsycometricsAPI.views.hr_views import generate_candidate_code
+from PsycometricsAPI.views.hr_views import generate_candidate_code, hr_candidates
 from PsycometricsAPI.views.candidate_views import verify_candidate_code
 from PsycometricsAPI.views.candidate_views import verify_completed_test
 
@@ -15,8 +15,9 @@ urlpatterns = [
     path("api/candidates/<str:id>/", candidate_views.candidate_detail),
 
     path('api/hrs/', hr_views.hr_list),
-    path("api/hrs/<str:id>/", hr_views.hr_detail),
     path('api/hrs/generate-code/', generate_candidate_code),
+    path('api/hrs/candidates/', hr_candidates),
+    path("api/hrs/<str:id>/", hr_views.hr_detail),
 
     path('api/tests/', test_views.test_list),
     path("api/tests/<str:id>/", test_views.test_detail),

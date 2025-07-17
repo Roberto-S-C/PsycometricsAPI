@@ -58,15 +58,14 @@ def google_auth(request):
     else:
         hr_id = str(hr["_id"])
 
-    # Generate JWT
+    # Generate JWT containing MongoDB HR ID as user_id
     refresh = RefreshToken()
-    refresh["hr"] = hr_id
+    refresh["user_id"] = str(hr_id)  # Use HR's MongoDB _id as user_id
 
     return Response({
         "status": "success",
         "data": {
             "refresh": str(refresh),
             "access": str(refresh.access_token),
-            "hr": hr_id
         }
     }, status=status.HTTP_200_OK)

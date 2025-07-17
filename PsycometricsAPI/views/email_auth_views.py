@@ -72,14 +72,13 @@ def signup(request):
     inserted_hr = hr_collection.insert_one(hr_doc)
     hr_id = str(inserted_hr.inserted_id)
 
-    # Generate JWT containing MongoDB HR ID
+    # Generate JWT containing MongoDB HR ID as user_id
     refresh = RefreshToken()
-    refresh["hr"] = hr_id
+    refresh["user_id"] = str(hr_id)  # Use HR's MongoDB _id as user_id
 
     return Response({
         "refresh": str(refresh),
         "access": str(refresh.access_token),
-        "hr": hr_id
     }, status=status.HTTP_201_CREATED)
 
 @api_view(["POST"])
@@ -104,15 +103,14 @@ def login(request):
             "message": "The email or password you entered is incorrect"
         }, status=status.HTTP_401_UNAUTHORIZED)
 
-    # Create JWT containing the HR's MongoDB _id
+    # Generate JWT containing MongoDB HR ID as user_id
     refresh = RefreshToken()
-    refresh["hr"] = str(hr["_id"])
+    refresh["user_id"] = str(hr["_id"])  # Use HR's MongoDB _id as user_id
 
     return Response({
         "status": "success",
         "data": {
             "refresh": str(refresh),
             "access": str(refresh.access_token),
-            "hr": str(hr["_id"]),
         }
     }, status=status.HTTP_200_OK)
