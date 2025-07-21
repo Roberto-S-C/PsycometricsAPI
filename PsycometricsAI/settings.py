@@ -67,3 +67,6 @@ SIMPLE_JWT = {
     "ROTATE_REFRESH_TOKENS": False,  # Optional: Set to True if you want to rotate refresh tokens
     "BLACKLIST_AFTER_ROTATION": True,  # Optional: Blacklist old refresh tokens after rotation
 }
+
+MICROSOFT_AUTH_CLIENT_ID = config('MICROSOFT_CLIENT_ID')
+MICROSOFT_AUTH_CLIENT_SECRET = config('MICROSOFT_CLIENT_SECRET')

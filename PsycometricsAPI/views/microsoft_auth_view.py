@@ -56,10 +56,9 @@ def microsoft_auth(request):
     hr = hr_collection.find_one({"email": email})
     if not hr:
         hr_doc = {
-            "first_name": user_data.get('givenName', ''),
-            "last_name": user_data.get('surname', ''),
+            "first_name": '',
+            "last_name": '',
             "email": email,
-            "company": user_data.get('companyName', ''),
         }
         inserted_hr = hr_collection.insert_one(hr_doc)
         hr_id = str(inserted_hr.inserted_id)

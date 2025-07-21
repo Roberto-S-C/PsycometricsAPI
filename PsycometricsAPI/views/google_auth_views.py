@@ -11,13 +11,12 @@ import requests
 def google_auth(request):
     id_token = request.data.get('id_token')
     email = request.data.get('email')
-    name = request.data.get('name')
 
-    if not id_token or not email or not name:
+    if not id_token or not email:
         return Response({
             "status": "error",
             "code": "MISSING_FIELDS",
-            "message": "id_token, email, and name are required"
+            "message": "id_token, email are required"
         }, status=status.HTTP_400_BAD_REQUEST)
 
     # Verify the id_token with Google
@@ -39,19 +38,13 @@ def google_auth(request):
             "message": "Invalid Google ID token"
         }, status=status.HTTP_401_UNAUTHORIZED)
 
-    # Split name into first and last
-    name_parts = name.split(' ', 1)
-    first_name = name_parts[0]
-    last_name = name_parts[1] if len(name_parts) > 1 else ''
-
     # Get or create HR in MongoDB
     hr = hr_collection.find_one({"email": email})
     if not hr:
         hr_doc = {
-            "first_name": first_name,
-            "last_name": last_name,
+            "first_name": '',
+            "last_name": '',
             "email": email,
-            "picture": token_info.get('picture', '')
         }
         inserted_hr = hr_collection.insert_one(hr_doc)
         hr_id = str(inserted_hr.inserted_id)
