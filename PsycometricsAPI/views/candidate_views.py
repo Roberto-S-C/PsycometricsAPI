@@ -5,9 +5,14 @@ from bson import ObjectId
 from ..db.mongo import candidate_collection, result_collection
 from ..serializers import CandidateSerializer
 from ..utils.objectIdConversion import convert_objectid
+from azure.storage.blob import BlobServiceClient
+from django.conf import settings
+from rest_framework.parsers import MultiPartParser
+import uuid
+from azure.core.exceptions import ResourceExistsError
+import requests
 import random
 import string
-
 
 @api_view(["GET", "POST"])
 def candidate_list(request):
@@ -17,31 +22,6 @@ def candidate_list(request):
         return Response(candidates)
 
     elif request.method == "POST":
-        # serializer = CandidateSerializer(data=request.data)
-        # if serializer.is_valid():
-        #     validated = serializer.validated_data
-
-        #     validated["hr"] = ObjectId(validated.pop("hr_id"))
-
-        #     result = candidate_collection.insert_one(validated)
-
-        #     response_data = {
-        #         "id": str(result.inserted_id),
-        #         "first_name": validated["first_name"],
-        #         "last_name": validated["last_name"],
-        #         "age": validated["age"],
-        #         "gender": validated["gender"],
-        #         "email": validated["email"],
-        #         "phone": validated["phone"],
-        #         "hr_id": str(validated["hr"]),
-        #         "code": str(validated["code"])
-        #     }
-
-        #     return Response(response_data, status=status.HTTP_201_CREATED)
-
-        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-        # --- New implementation below ---
         data = request.data
         required_fields = ["email", "first_name", "last_name", "age", "gender", "phone"]
         for field in required_fields:
@@ -59,10 +39,57 @@ def candidate_list(request):
             )
 
         # Generate a unique 6-character code
-        while True:
-            random_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
-            if not candidate_collection.find_one({"code": random_code}):
-                break
+        def generate_unique_code():
+            while True:
+                code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+                if not candidate_collection.find_one({"code": code}):
+                    return code
+
+        unique_code = generate_unique_code()
+
+        # Validate and upload CV
+        cv_file = request.FILES.get("cv")
+        if not cv_file:
+            return Response(
+                {"error": "CV file is required."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        if not cv_file.name.endswith(".pdf"):
+            return Response(
+                {"error": "CV must be a PDF file."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Generate a unique file name
+        unique_file_name = f"{uuid.uuid4()}_{cv_file.name}"
+
+        # Upload CV to Azure Blob Storage
+        try:
+            blob_service_client = BlobServiceClient.from_connection_string(settings.AZURE_STORAGE_CONNECTION_STRING)
+            container_name = settings.AZURE_STORAGE_CONTAINER_NAME
+            blob_client = blob_service_client.get_blob_client(container=container_name, blob=unique_file_name)
+
+            # Check if the blob already exists
+            if blob_client.exists():
+                return Response(
+                    {"error": f"A file with the name '{unique_file_name}' already exists in the storage."},
+                    status=status.HTTP_409_CONFLICT
+                )
+
+            # Upload the file
+            blob_client.upload_blob(cv_file, overwrite=False)
+            cv_url = blob_client.url
+        except ResourceExistsError:
+            return Response(
+                {"error": f"A file with the name '{unique_file_name}' already exists in the storage."},
+                status=status.HTTP_409_CONFLICT
+            )
+        except Exception as e:
+            return Response(
+                {"error": f"Failed to upload CV: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
         # Set hr ObjectId (hardcoded as requested)
         hr_object_id = ObjectId("68634fee4a86e24702186e63")
@@ -75,7 +102,9 @@ def candidate_list(request):
             "gender": data["gender"],
             "phone": data["phone"],
             "hr": hr_object_id,
-            "code": random_code,
+            "cv": cv_url,
+            "candidate_evaluation": "pending",
+            "code": unique_code
         }
 
         result = candidate_collection.insert_one(candidate_doc)
@@ -89,8 +118,25 @@ def candidate_list(request):
             "email": data["email"],
             "phone": data["phone"],
             "hr_id": str(hr_object_id),
-            "code": random_code,
+            "cv": candidate_doc["cv"],
+            "candidate_evaluation": candidate_doc["candidate_evaluation"],
+            "code": candidate_doc["code"]
         }
+
+        # Trigger the webhook
+        webhook_url = "https://roberto-pruebas.app.n8n.cloud/webhook/candidate-registered"
+        webhook_payload = {
+            "first_name": data["first_name"],
+            "last_name": data["last_name"],
+            "email": data["email"],
+            "code": candidate_doc["code"],
+        }
+        try:
+            webhook_response = requests.post(webhook_url, json=webhook_payload, timeout=5)
+            if webhook_response.status_code != 200:
+                print(f"Webhook failed with status code {webhook_response.status_code}: {webhook_response.text}")
+        except Exception as e:
+            print(f"Failed to send webhook: {str(e)}")
 
         return Response(response_data, status=status.HTTP_201_CREATED)
 
@@ -98,12 +144,13 @@ def candidate_list(request):
 @api_view(["GET", "DELETE", "PUT"])
 def candidate_detail(request, id):
     try:
-        # Search by code, not by id
-        candidate = candidate_collection.find_one({"code": id})
+        # Convert the id string to an ObjectId
+        candidate_id = ObjectId(id)
+        candidate = candidate_collection.find_one({"_id": candidate_id})
         if not candidate:
             return Response({"error": "Candidate not found"}, status=404)
     except Exception:
-        return Response({"error": "Invalid code"}, status=400)
+        return Response({"error": "Invalid candidate ID"}, status=400)
 
     if request.method == "GET":
         candidate = convert_objectid(candidate)
@@ -131,8 +178,8 @@ def candidate_detail(request, id):
             "email": data["email"],
             "phone": data["phone"]
         }
-        candidate_collection.update_one({"code": id}, {"$set": update_data})
-        candidate = candidate_collection.find_one({"code": id})
+        candidate_collection.update_one({"_id": candidate_id}, {"$set": update_data})
+        candidate = candidate_collection.find_one({"_id": candidate_id})
         candidate = convert_objectid(candidate)
         return Response(candidate)
 

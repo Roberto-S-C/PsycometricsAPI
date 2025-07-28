@@ -9,6 +9,7 @@ from ..utils.objectIdConversion import convert_objectid
 from rest_framework_simplejwt.authentication import JWTAuthentication
 import random
 import string
+import requests
 
 
 @api_view(["GET", "POST"])
@@ -70,64 +71,6 @@ def hr_detail(request, id):
 
         return Response(status=204)
 
-
-@api_view(["POST"])
-@permission_classes([IsAuthenticated])
-def generate_candidate_code(request):
-    try:
-        # Extract HR ID from the authenticated user
-        hr_id = request.user.user_id
-        if not hr_id:
-            return Response({"error": "HR ID not found in token"}, status=status.HTTP_401_UNAUTHORIZED)
-
-        # Find HR by user_id
-        hr = hr_collection.find_one({"_id": ObjectId(hr_id)})
-        if not hr:
-            return Response({"error": "HR not found"}, status=status.HTTP_404_NOT_FOUND)
-
-        # Generate unique 6-character code (uppercase letters and digits)
-        def generate_code():
-            return ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
-
-        # Ensure code uniqueness in candidate_collection
-        for _ in range(10):  # Try up to 10 times
-            code = generate_code()
-            if not candidate_collection.find_one({"code": code}):
-                break
-        else:
-            return Response({"error": "Could not generate unique code"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-        # Generate a unique email using the code
-        unique_email = f"candidate_{code}@example.com"
-
-        # Create generic candidate
-        candidate_doc = {
-            "first_name": "Candidate",
-            "last_name": "Candidate",
-            "age": 0,
-            "gender": "",
-            "email": unique_email,  # Use the unique email
-            "phone": "",
-            "hr": hr_id,
-            "code": code
-        }
-        inserted = candidate_collection.insert_one(candidate_doc)
-        candidate_doc["id"] = str(inserted.inserted_id)
-
-        return Response({
-            "status": "success",
-            "candidate": {
-                "id": candidate_doc["id"],
-                "code": code,
-                "email": unique_email  # Return the unique email
-            }
-        }, status=status.HTTP_201_CREATED)
-
-    except Exception as e:
-        print(f"Error generating candidate code: {e}")
-        return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
-
-
 @api_view(["GET"])
 @permission_classes([IsAuthenticated])
 def hr_candidates(request):
@@ -147,13 +90,52 @@ def hr_candidates(request):
     if not candidates:
         return Response({"message": "No candidates found"}, status=status.HTTP_404_NOT_FOUND)
 
-    # Filter out candidates with emails like "candidate_<code>@example.com"
-    filtered_candidates = [
-        candidate for candidate in candidates
-        if not candidate["email"].startswith("candidate_") or not candidate["email"].endswith("@example.com")
-    ]
-
     # Convert ObjectId fields to strings
-    filtered_candidates = [convert_objectid(candidate) for candidate in filtered_candidates]
+    candidates = [convert_objectid(candidate) for candidate in candidates]
 
-    return Response(filtered_candidates, status=status.HTTP_200_OK)
+    return Response(candidates, status=status.HTTP_200_OK)
+
+@api_view(["PUT"])
+@permission_classes([IsAuthenticated])
+def candidate_evaluation(request, id):  # Change user_id to id
+    try:
+        # Convert the id string to an ObjectId
+        candidate_id = ObjectId(id)
+    except Exception:
+        return Response({"error": "Invalid user ID"}, status=status.HTTP_400_BAD_REQUEST)
+
+    # Fetch the candidate by ID
+    candidate = candidate_collection.find_one({"_id": candidate_id})
+    if not candidate:
+        return Response({"error": "Candidate not found"}, status=status.HTTP_404_NOT_FOUND)
+
+    # Validate the candidate_evaluation field
+    candidate_evaluation = request.data.get("candidate_evaluation")
+    if candidate_evaluation not in ["pending", "approved", "rejected"]:
+        return Response(
+            {"error": "Invalid candidate_evaluation value. Must be 'pending', 'approved', or 'rejected'."},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # Update the candidate_evaluation field in the database
+    candidate_collection.update_one(
+        {"_id": candidate_id},
+        {"$set": {"candidate_evaluation": candidate_evaluation}}
+    )
+
+    # Trigger the webhook
+    webhook_url = "https://roberto-pruebas.app.n8n.cloud/webhook/candidate-evaluation"
+    webhook_payload = {
+        "first_name": candidate.get("first_name"),
+        "last_name": candidate.get("last_name"),
+        "email": candidate.get("email"),
+        "candidate_evaluation": candidate_evaluation
+    }
+    try:
+        webhook_response = requests.post(webhook_url, json=webhook_payload, timeout=5)
+        if webhook_response.status_code != 200:
+            print(f"Webhook failed with status code {webhook_response.status_code}: {webhook_response.text}")
+    except Exception as e:
+        print(f"Failed to send webhook: {str(e)}")
+
+    return Response({"message": "Candidate evaluation updated successfully"}, status=status.HTTP_200_OK)
