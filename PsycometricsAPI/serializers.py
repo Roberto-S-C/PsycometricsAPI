@@ -19,8 +19,17 @@ class CandidateSerializer(serializers.Serializer):
     gender = serializers.CharField(max_length=10)
     email = serializers.EmailField()
     phone = serializers.CharField(max_length=20)
-    hr_id = serializers.CharField()  # FK reference to HR
-    code = serializers.CharField(max_length=50)
+    hr_id = serializers.CharField()
+    cv = serializers.URLField(required=False, allow_blank=True)
+    candidate_evaluation = serializers.ChoiceField(choices=["pending", "approved", "rejected"], default="pending")
+    code = serializers.RegexField(
+        regex=r"^[A-Z0-9]{6}$",
+        max_length=6,
+        min_length=6,
+        error_messages={
+            "invalid": "The code must be exactly 6 characters long and contain only uppercase letters or digits."
+        }
+    )
 
 class ResponseSerializer(serializers.Serializer):
     question_id = serializers.CharField()
@@ -47,3 +56,26 @@ class QuestionSerializer(serializers.Serializer):
 class TestSerializer(serializers.Serializer):
     id = serializers.CharField(read_only=True)
     questions = QuestionSerializer(many=True)
+
+class ReportSerializer(serializers.Serializer):
+    candidate_id = serializers.CharField()
+    test_id = serializers.CharField()
+    result_id = serializers.CharField()
+    hr_id = serializers.CharField()
+    summary = serializers.CharField()
+    traits = serializers.ListField(child=serializers.CharField())
+    conflict_style = serializers.CharField()
+    skills = serializers.DictField(
+        child=serializers.CharField(),
+        default={
+            "problem_solving": "",
+            "communication": "",
+            "empathy": "",
+            "leadership": "",
+            "stress_tolerance": "",
+            "integrity": ""
+        }
+    )
+    red_flags = serializers.ListField(child=serializers.CharField())
+    recommendations = serializers.ListField(child=serializers.CharField())
+    raw_analysis = serializers.CharField()
