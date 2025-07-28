@@ -7,13 +7,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 DEBUG = True 
 
+# ALLOWED_HOSTS = [
+#     "localhost",
+#     "127.0.0.1",
+#     "192.168.100.73",
+#     "18.206.182.194",
+#     "psycometrics.app",
+#     "www.psycometrics.app",
+# ]
+
 ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "192.168.100.73",
-    "18.206.182.194",
-    "psycometrics.app",
-    "www.psycometrics.app"
+    "*",  # Allow all hosts for development purposes
 ]
 
 INSTALLED_APPS = [
@@ -70,3 +74,5 @@ SIMPLE_JWT = {
 
 MICROSOFT_AUTH_CLIENT_ID = config('MICROSOFT_CLIENT_ID')
 MICROSOFT_AUTH_CLIENT_SECRET = config('MICROSOFT_CLIENT_SECRET')
+AZURE_STORAGE_CONNECTION_STRING = config("AZURE_STORAGE_CONNECTION_STRING")
+AZURE_STORAGE_CONTAINER_NAME = config("AZURE_STORAGE_CONTAINER_NAME")
